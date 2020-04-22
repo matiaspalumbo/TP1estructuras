@@ -20,6 +20,3 @@ typedef struct {
   int edad;
   char *lugarDeNacimiento; //pais o capital
 } Persona;
-
-
-
