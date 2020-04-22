@@ -42,41 +42,41 @@ int glist_vacia(GList lista) {
 }
 
 GList glist_agregar_final(GList lista, void* dato) {
-	GNodo* nuevoNodo = malloc(sizeof(GNodo));
-	nuevoNodo->dato = dato;
-	nuevoNodo->sig = lista;
+  GNodo* nuevoNodo = malloc(sizeof(GNodo));
+  nuevoNodo->dato = dato;
+  nuevoNodo->sig = lista;
   GNodo *aux = lista->ant;
-	if (lista != NULL)
-		lista->ant = nuevoNodo;
-	if (lista == NULL)
-		lista = nuevoNodo;
-	lista->primero = nuevoNodo;
-	return lista;
+  if (lista != NULL)
+	lista->ant = nuevoNodo;
+  if (lista == NULL)
+	lista = nuevoNodo;
+  lista->primero = nuevoNodo;
+  return lista;
 }
 
 GList glist_agregar_inicio(GList lista, int dato) {
-	GNodo* nuevoNodo = malloc(sizeof(GNodo));
-	nuevoNodo->dato = dato;
-	if (glist_vacia(lista)) {
-		nuevoNodo->sig = nuevoNodo;
-		lista->primero = nuevoNodo;
-		lista->ultimo = nuevoNodo;
-	} else {
-		nuevoNodo->sig = lista->primero;
-		lista->primero = nuevoNodo;
-		lista->ultimo->sig = nuevoNodo;
-	}
-	return lista;
+  GNodo* nuevoNodo = malloc(sizeof(GNodo));
+  nuevoNodo->dato = dato;
+  if (glist_vacia(lista)) {
+	nuevoNodo->sig = nuevoNodo;
+	lista->primero = nuevoNodo;
+	lista->ultimo = nuevoNodo;
+  } else {
+	nuevoNodo->sig = lista->primero;
+	lista->primero = nuevoNodo;
+	lista->ultimo->sig = nuevoNodo;
+  }
+  return lista;
 }
 
 
 void glist_recorrer(GList lista, FuncionVisitante visit) {
-	GNodo* temp = lista->primero;
-	while (temp != lista->ultimo) {
-		visit(temp->dato);
-		temp = temp->sig;
-	}
-	visit(lista->ultimo->dato);
+  GNodo* temp = lista->primero;
+  while (temp != lista->ultimo) {
+	visit(temp->dato);
+	temp = temp->sig;
+  }
+  visit(lista->ultimo->dato);
 }
 
 
