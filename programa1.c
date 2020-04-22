@@ -10,7 +10,7 @@
 
 #define MAX_STR_SIZE 70
 
-
+// ESJNAER;JGNAERJN ;AEJ 
 
 typedef struct {
   char *nombre;
