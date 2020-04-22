@@ -1,7 +1,7 @@
-#ifndef __GDCLIST_H__
-#define __GDCLIST_H__
+# ifndef __GDCLIST_H__
+# define __GDCLIST_H__
 
-#include <stddef.h>
+# include <stddef.h>
 
 
 typedef struct _GNodo {

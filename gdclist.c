@@ -1,5 +1,5 @@
-#include "gdclist.h"
-#include <stdlib.h>
+# include "gdclist.h"
+# include <stdlib.h>
 
 
 GList gdclist_crear() {
@@ -75,15 +75,16 @@ GNodo *gdclist_intercambiar(GNodo *lista, int posicion1, int posicion2) {
   }
   /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
 
-  GNodo *auxA = nodoA;
+  GNodo *aux1A = nodoA->sig;
+  GNodo *aux2A = nodoA->ant;
   nodoA->sig = nodoB->sig;
   nodoA->ant = nodoB->ant;
   (nodoB->sig)->ant = nodoA;
   (nodoB->ant)->sig = nodoA;
-  nodoB->sig = auxA->sig;
-  nodoB->ant = auxA->ant;
-  (auxA->sig)->ant = nodoB;
-  (auxA->ant)->sig = nodoB;
+  nodoB->sig = aux1A;
+  nodoB->ant = aux2A;
+  aux1A->ant = nodoB;
+  aux2A->sig = nodoB;
 
   return inicio;
 }

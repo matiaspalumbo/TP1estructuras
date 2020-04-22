@@ -8,7 +8,6 @@
 
 #define MAX_STR_SIZE 70
 
-// COMENTARIO GIT
 
 typedef struct {
   char *nombre;
