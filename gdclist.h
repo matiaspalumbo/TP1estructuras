@@ -30,15 +30,18 @@ void gdclist_destruir(GList lista);
 // Determina si la lista es vacía.
 int gdclist_vacia(GList lista);
 
+// Devuelve la longitud de una lista.
+int gdclist_longitud(GList lista);
+
 // Agrega un elemento al inicio de la lista. 
-GNodo *gdclist_agregar_inicio(GList lista, void *dato);
+GList gdclist_agregar_inicio(GList lista, void *dato);
 
 // Agrega un elemento al final de la lista.
-GNodo *gdclist_agregar_final(GList lista, void *dato);
+GList gdclist_agregar_final(GList lista, void *dato);
 
 // Dada una lista y dos posiciones, intercambia los nodos en posicion1 y posicion2 entre si.
 // Asumimos que las posiciones van de 0 hasta longitud-1 y posicion1 != posicion2.
-GNodo *gdclist_intercambiar(GList lista, int posicion1, int posicion2);
+GList gdclist_intercambiar(GList lista, int posicion1, int posicion2);
 
 void gdclist_recorrer(GList lista, FuncionVisitante visit, DListOrdenDeRecorrido orden);
 
