@@ -11,12 +11,12 @@
 #define MAX_STR_SIZE 70
 
 
-
 typedef struct {
   char *nombre;
   int edad;
   char *lugarDeNacimiento; //pais o capital
 } Persona;
+
 
 int contarLineas(FILE *fp) { // Función que cuenta la cantidad de líneas del archivo que se pasa como argumento.
   int lineas_fp = 0;
@@ -28,6 +28,7 @@ int contarLineas(FILE *fp) { // Función que cuenta la cantidad de líneas del a
   }
   return lineas_fp;
 }
+
 
 char **leerArchivo(char *file, int *len_file){
   FILE *fp_archivo;
@@ -52,7 +53,6 @@ char **leerArchivo(char *file, int *len_file){
   fclose(fp_archivo);
   return arreglo;
 }
-
 
 
 void escribirPersonas(char **nombres, char **paises, int nPersonas, int len_nombres, int len_paises, char *file) {
