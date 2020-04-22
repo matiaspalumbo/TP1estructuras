@@ -1,9 +1,6 @@
 #include "gdclist.h"
 #include <stdlib.h>
 
-// cambiar tipo de datos a void*
-// agregar funcion intercambiar (nodos)
-// analizar utilidad de función recorrer
 
 GList gdclist_crear() {
   return NULL;
@@ -31,8 +28,8 @@ GNodo *gdclist_agregar_inicio(GList lista, void *dato) {
   GNodo *nuevoNodo = malloc(sizeof(GNodo));  
   if (lista == NULL) {
     nuevoNodo->dato = dato;
-    nuevoNodo->sig = lista;
-    nuevoNodo->ant = lista;
+    nuevoNodo->sig = nuevoNodo;
+    nuevoNodo->ant = nuevoNodo;
   } else {
     nuevoNodo->dato = dato;
     nuevoNodo->sig = lista;
@@ -77,7 +74,7 @@ GNodo *gdclist_intercambiar(GNodo *lista, int posicion1, int posicion2) {
     lista = lista->sig;
   }
   /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
-  
+
   GNodo *auxA = nodoA;
   nodoA->sig = nodoB->sig;
   nodoA->ant = nodoB->ant;
@@ -89,4 +86,26 @@ GNodo *gdclist_intercambiar(GNodo *lista, int posicion1, int posicion2) {
   (auxA->ant)->sig = nodoB;
 
   return inicio;
+}
+
+
+void gdclist_recorrer_adelante(GList lista, FuncionVisitante visit) {
+  GNodo * nodo = lista;
+  for (; nodo->sig != lista; nodo = nodo->sig)
+    visit(nodo->dato);
+  visit(nodo->dato);
+}
+
+void gdclist_recorrer_atras(GList lista, FuncionVisitante visit) {
+  GNodo * nodo = lista->ant;
+  for (; nodo->ant != lista->ant; nodo = nodo->ant)
+    visit(nodo->dato);
+  visit(nodo->dato);
+}
+
+void gdclist_recorrer(GList lista, FuncionVisitante visit, DListOrdenDeRecorrido orden) {
+  if (lista != NULL) {
+    if (orden) gdclist_recorrer_atras(lista, visit);
+    else gdclist_recorrer_adelante(lista, visit);
+  }
 }
