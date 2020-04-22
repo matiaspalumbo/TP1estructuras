@@ -4,9 +4,7 @@
 # include <math.h>
 # include <time.h>
 # include <assert.h>
-# include <wchar.h>
-#include <locale.h>
-#include <ctype.h>
+# include <locale.h>
 
 #define MAX_STR_SIZE 70
 
