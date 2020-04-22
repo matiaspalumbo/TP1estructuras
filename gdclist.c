@@ -1,6 +1,11 @@
 #include "gdclist.h"
 #include <stdlib.h>
 
+// cambiar tipo de datos a void*
+// agregar funcion intercambiar (nodos)
+// analizar utilidad de función recorrer
+
+
 GList glist_crear() {
   return NULL;
 }
