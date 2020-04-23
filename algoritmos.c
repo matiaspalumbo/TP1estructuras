@@ -76,48 +76,22 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
 }
 
 
-GList insertionSort(GList lista, FuncionComparadora compare) { 
-  GNodo *inicio = lista->sig;
-  GNodo *temp, *temp2;
-  for (int i = 1; i < gdclist_longitud(lista); i++) {
-    temp = temp2 = inicio;
-    for (int j = i-1; 0 <= j; j--) {
-      if (0 < compare(temp2->ant->dato, temp->dato)) {
-        gdclist_intercambiar(&inicio, i, j);
-
+GList insertionSort(GList lista, FuncionComparadora comparar) { 
+  if (!gdclist_es_vacia(lista)) {
+    int valor, aux;
+    for (int i = 1; i < gdclist_longitud(lista); i++) {
+      aux = i;
+      for (int j = aux-1; 0 <= j;) {
+        valor = comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux));
+        if (0 < valor) {
+          gdclist_intercambiar(&lista, j, aux);
+          aux--;
+          j--;
+        } else j = -1;
       }
-      temp2 = temp2->ant;
     }
-
-
-    inicio = inicio->sig;
   }
   return lista;
 }
 
-//pseudocode
-/*
-procedure insertionSort( A : array of items )
-   int holePosition
-   int valueToInsert
-	
-   for i = 1 to length(A) inclusive do:
-	
-      // select value to be inserted 
-      valueToInsert = A[i]
-      holePosition = i
-      
-      // locate hole position for the element to be inserted 
-		
-      while holePosition > 0 and A[holePosition-1] > valueToInsert do:
-         A[holePosition] = A[holePosition-1]
-         holePosition = holePosition -1
-      end while
-		
-      // insert the number at hole position 
-      A[holePosition] = valueToInsert
-      
-   end for
-	
-end procedure
-*/
+
