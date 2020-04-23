@@ -81,13 +81,13 @@ GList gdclist_agregar_final(GList lista, void *dato) {
 
 GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
   assert(!gdclist_es_vacia(lista));
-  assert(posicion1 >= 0 && posicion1 < gdclist_longitud(lista));
-  assert(posicion2 >= 0 && posicion2 < gdclist_longitud(lista));
+  assert(0 <= posicion1 && posicion1 < gdclist_longitud(lista));
+  assert(0 <= posicion2 && posicion2 < gdclist_longitud(lista));
   GNodo *nodoA, *nodoB;
   if (posicion1 != posicion2) {
     int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
     int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
-    GNodo* temp = lista;
+    GNodo *temp = lista;
     for (int i = 0; i < mayor+1; i++) {
       if (i == menor) nodoA = temp;
       if (i == mayor) nodoB = temp;

@@ -15,17 +15,22 @@ GList selectionSort(GList lista, FuncionComparadora func) {
 }
 
 GList insertionSort(GList lista, FuncionComparadora compare) { 
-  GNodo * inicio = lista;
-  GNodo * temp;
+  GNodo *inicio = lista->sig;
+  GNodo *temp, *temp2;
   for (int i = 1; i < gdclist_longitud(lista); i++) {
-    temp = lista;
+    temp = temp2 = inicio;
     for (int j = i-1; 0 <= j; j--) {
-      if (compare(temp->dato, (temp->ant)->dato))
+      if (0 < compare(temp2->ant->dato, temp->dato)) {
+        gdclist_intercambiar(inicio, i, j);
+
+      }
+      temp2 = temp2->ant;
     }
 
 
-    lista = lista->sig;
+    inicio = inicio->sig;
   }
+  return lista;
 }
 
 //pseudocode
