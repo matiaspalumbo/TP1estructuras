@@ -89,26 +89,35 @@ void* gdclist_leer(GList lista, int pos) {
 }
 
 
-void gdclist_eliminar(GList* lista, int pos) {
-  assert(pos >= 0);
-  assert(pos <gdclist_longitud(*lista));
+// void gdclist_eliminar(GList* lista, int pos) {
+//   assert(pos >= 0);
+//   assert(pos <gdclist_longitud(*lista));
 
-  if (pos == 0) {
-    GNodo* aux = (*lista)->ant;
-    free(*lista);
-    *lista = (*lista)->sig;
-    (*lista)->ant = aux;
-  } else {
-    GNodo* temp = *lista;
-    for (int i=0; i!=pos-1; i++) {
-      temp = temp->sig;
-    } // temp = list[pos-1]
-    GNodo *aux = temp->sig->sig;
-    temp->sig = aux;
-    aux->ant = temp;
-    free(temp->sig);
-  }
-}
+//   if (pos == 0) {
+//     free(*lista);
+//     // printf("ant %d\n", *(int*)((*lista)->ant->dato));
+//     // printf("actual %d\n", *(int*)((*lista)->sig->dato));
+//     // printf("sig %d\n", *(int*)((*lista)->dato));
+//     // GNodo* aux1 = (*lista)->ant;
+//     // GNodo* aux2 = (*lista)->sig;
+//     // *lista = aux2;
+//     // (*lista)->ant = aux1;
+//     // printf("ant %d\n", *(int*)((*lista)->ant->dato));
+//     // printf("actual %d\n", *(int*)((*lista)->sig->dato));
+//     // printf("sig %d\n", *(int*)((*lista)->dato));
+//   } else {
+//     GNodo* temp = *lista;
+//     for (int i=0; i!=pos-1; i++) {
+//       temp = temp->sig;
+//     } // temp = list[pos-1]
+//     GNodo *aux = temp->sig->sig;
+//     free(temp->sig);
+//     temp->sig = aux;
+//     aux->ant = temp;
+//     printf("%d\n", *(int*)(temp->dato));
+//     printf("%d\n", *(int*)(temp->sig->dato));
+//   }
+// }
 
 
 
