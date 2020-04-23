@@ -23,7 +23,6 @@ int main(int argc, char *argv[]) {
 
   // lista = selectionSort(lista, compNumeros);
   // lista = gdclist_intercambiar(&lista, 0, 4);
-  // gdclist_eliminar(&lista, atoi(argv[1]));
   lista = insertionSort(lista, compNumeros);
 
   gdclist_recorrer(lista, imprimir_dato, DLIST_RECORRIDO_HACIA_ADELANTE);

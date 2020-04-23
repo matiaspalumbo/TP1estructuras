@@ -78,12 +78,11 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
 
 GList insertionSort(GList lista, FuncionComparadora comparar) { 
   if (!gdclist_es_vacia(lista)) {
-    int valor, aux;
+    int aux;
     for (int i = 1; i < gdclist_longitud(lista); i++) {
       aux = i;
       for (int j = aux-1; 0 <= j;) {
-        valor = comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux));
-        if (0 < valor) {
+        if (0 < comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux));) {
           gdclist_intercambiar(&lista, j, aux);
           aux--;
           j--;
@@ -93,5 +92,4 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
   }
   return lista;
 }
-
 
