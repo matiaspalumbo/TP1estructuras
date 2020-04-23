@@ -79,36 +79,105 @@ GList gdclist_agregar_final(GList lista, void *dato) {
   return lista;
 }
 
-GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
-  assert(!gdclist_es_vacia(lista));
-  assert(0 <= posicion1 && posicion1 < gdclist_longitud(lista));
-  assert(0 <= posicion2 && posicion2 < gdclist_longitud(lista));
-  GNodo *nodoA, *nodoB;
-  if (posicion1 != posicion2) {
-    int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
-    int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
-    GNodo *temp = lista;
-    for (int i = 0; i < mayor+1; i++) {
-      if (i == menor) nodoA = temp;
-      if (i == mayor) nodoB = temp;
-      temp = temp->sig;
-    } /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
-    GNodo *auxAsig = nodoA->sig;
-    GNodo *auxAant = nodoA->ant;
-    nodoA->sig = nodoB->sig;
-    nodoA->ant = nodoB->ant;
-    nodoB->sig->ant = nodoA;
-    nodoB->ant->sig = nodoA;
-    nodoB->sig = auxAsig;
-    nodoB->ant = auxAant;
-    auxAsig->ant = nodoB;
-    auxAant->sig = nodoB;
-    if (nodoA == lista) lista = nodoB;
-    else if (nodoB == lista) lista = nodoA;
-  }
-  return lista;
+void* gdclist_leer(GList lista, int pos) {
+  assert(pos >= 0);
+  // assert(pos < gdclist_longitud(lista));
+  GNodo* temp = lista;
+  for (int i = 0; i != pos; i++)
+    temp = temp->sig;
+  return temp->dato;
 }
 
+
+void gdclist_eliminar(GList* lista, int pos) {
+  assert(pos >= 0);
+  assert(pos <gdclist_longitud(*lista));
+
+  if (pos == 0) {
+    GNodo* aux = (*lista)->ant;
+    free(*lista);
+    *lista = (*lista)->sig;
+    (*lista)->ant = aux;
+  } else {
+    GNodo* temp = *lista;
+    for (int i=0; i!=pos-1; i++) {
+      temp = temp->sig;
+    } // temp = list[pos-1]
+    GNodo *aux = temp->sig->sig;
+    temp->sig = aux;
+    aux->ant = temp;
+    free(temp->sig);
+  }
+}
+
+
+
+
+// GList gdclist_intercambiar(GList* lista, int posicion1, int posicion2) {
+//   assert(!gdclist_es_vacia(*lista));
+//   assert(posicion1 >= 0 && posicion1 < gdclist_longitud(*lista));
+//   assert(posicion2 >= 0 && posicion2 < gdclist_longitud(*lista));
+//   GNodo *nodoA, *nodoB;
+//   if (posicion1 != posicion2) {
+//     int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
+//     int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
+//     GNodo* temp = *lista;
+//     for (int i = 0; i < mayor+1; i++) {
+//       if (i == menor) nodoA = temp;
+//       if (i == mayor) nodoB = temp;
+//       temp = temp->sig;
+//     } /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
+//     // printf("nodoA %d\n", *(int*)(nodoA->dato));
+//     // printf("nodoB %d\n", *(int*)(nodoB->dato));
+//     if (menor == 0 && mayor == gdclist_longitud(*lista)-1) {
+//       nodoA->ant = nodoB->ant;
+//       nodoB->ant->sig = nodoA;
+//       GNodo* aux = nodoA->sig;
+//       nodoA->sig = nodoB;
+//       nodoB->sig = aux;
+//       *lista = nodoB;
+//       // nodoA->sig->ant = nodoB;
+//       // GNodo* nodoAux = nodoB->ant;
+//       // nodoB->ant = nodoA;
+//       // nodoB->sig = nodoA->sig;
+//       // nodoA->sig = nodoB;
+//       // nodoA->ant = nodoAux;
+//     printf("nodoA %d\n", *(int*)(nodoA->dato));
+//     printf("nodoB %d\n", *(int*)(nodoB->dato));
+//     printf("nodoAant %d\n", *(int*)(nodoA->ant->dato));
+//     printf("nodoAsig %d\n", *(int*)(nodoA->sig->dato));
+//     printf("nodoBant %d\n", *(int*)(nodoB->ant->dato));
+//     printf("nodoBsig %d\n", *(int*)(nodoB->sig->dato));
+//     }
+//     if (menor == mayor - 1) {
+//       nodoA->ant->sig = nodoB;
+//       nodoB->sig->ant = nodoA;
+//       GNodo* nodoAux = nodoA->ant;
+//       nodoA->ant = nodoB;
+//       nodoA->sig = nodoB->sig;
+//       nodoB->sig = nodoA;
+//       nodoB->ant = nodoAux;
+//     } else {
+//     GNodo *auxAsig = nodoA->sig;
+//     GNodo *auxAant = nodoA->ant;
+//     // printf("nodoAsig %d\n", *(int*)(auxAsig->dato));
+//     // printf("nodoAant %d\n", *(int*)(auxAant->dato));
+//     nodoA->sig = nodoB->sig;
+//     nodoA->ant = nodoB->ant;
+//     // printf("nodoA->sig %d\n", *(int*)(nodoA->sig->dato));
+//     // printf("nodoA->ant %d\n", *(int*)(nodoA->ant->dato));
+//     nodoB->sig->ant = nodoA;
+//     nodoB->ant->sig = nodoA;
+//     nodoB->sig = auxAsig;
+//     nodoB->ant = auxAant;
+//     auxAsig->ant = nodoB;
+//     auxAant->sig = nodoB;
+//     }
+//     if (menor == 0) *lista = nodoB;
+//   }
+//   printf("lista %d - %d\n", *(int *)((*lista)->ant->dato), *(int *)((*lista)->dato));
+//   return *lista;
+// }
 
 void gdclist_recorrer_adelante(GList lista, FuncionVisitante visit) {
   GNodo * nodo = lista;

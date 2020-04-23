@@ -1,27 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gdclist.h"
+#include "algoritmos.c" // TO CHANGE
 
 static void imprimir_dato(void * dato) {
   printf("%d ", *(int*)dato);
 }
 
+
 int main(int argc, char *argv[]) {
   GList lista = gdclist_crear();
-  int x = 25, y = 26, z = 27;
-  int a = 1, b = 2, c = 3;
+  int a1 = 1, a2 = 2, a3 = 3, a4 = 4, a5 =5;
 
-  lista = gdclist_agregar_inicio(lista, &c);
-  lista = gdclist_agregar_inicio(lista, &b);
-  lista = gdclist_agregar_inicio(lista, &a);
-  lista = gdclist_agregar_final(lista, &x);
-  lista = gdclist_agregar_final(lista, &y);
-  lista = gdclist_agregar_final(lista, &z);
+  lista = gdclist_agregar_inicio(lista, &a1);
+  lista = gdclist_agregar_inicio(lista, &a2);
+  lista = gdclist_agregar_inicio(lista, &a3);
+  lista = gdclist_agregar_inicio(lista, &a4);
+  lista = gdclist_agregar_inicio(lista, &a5);
 
   gdclist_recorrer(lista, imprimir_dato, DLIST_RECORRIDO_HACIA_ADELANTE);
   puts("");
 
-  lista = gdclist_intercambiar(lista, 1, 4);
+  // for (int i = 0; i < gdclist_longitud(lista); i++) printf("tercer elemento: %d\n", *(int*)gdclist_leer(lista, i));
+  // lista = selectionSort(lista, compNumeros);
+  lista = gdclist_intercambiar(&lista, 0, 4);
 
   gdclist_recorrer(lista, imprimir_dato, DLIST_RECORRIDO_HACIA_ADELANTE);
   puts("");
