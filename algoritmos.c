@@ -84,10 +84,11 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
 
 GList insertionSort(GList lista, FuncionComparadora comparar) { 
   if (!gdclist_es_vacia(lista)) {
-    int aux;
-    for (int i = 1; i < gdclist_longitud(lista); i++) {
+    int aux, j, longitud = gdclist_longitud(lista);
+    for (int i = 1; i < longitud; i++) {
       aux = i;
-      for (int j = aux-1; 0 <= j;) {
+      j = aux-1;
+      while (0 <= j) {
         if (0 < comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux))) {
           gdclist_intercambiar(&lista, j, aux);
           aux--;
