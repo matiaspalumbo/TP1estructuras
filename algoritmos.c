@@ -44,6 +44,7 @@ int compNumeros(void* num1, void* num2) {
 // }
 
 // the best (i think) shot at selection sort
+
 GList selectionSort(GList lista, FuncionComparadora comparar) {
   if (!gdclist_es_vacia(lista)) {
     int indiceMinimo, longitud = gdclist_longitud(lista);
