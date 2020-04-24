@@ -29,17 +29,17 @@ int contarLineas(FILE *fp) { // Función que cuenta la cantidad de líneas del a
 
 
 char **leerArchivo(char *file, int *len_file){
-  FILE *fp_archivo;
-  fp_archivo = fopen(file, "r"); // Abre el archivo pasado como parametro.
-  *len_file = contarLineas(fp_archivo); // Cuenta la cantidad de líneas del archivo.
-  rewind(fp_archivo);
+  FILE *archivo;
+  archivo = fopen(file, "r"); // Abre el archivo pasado como parametro.
+  *len_file = contarLineas(archivo); // Cuenta la cantidad de líneas del archivo.
+  rewind(archivo);
 
   char **arreglo = malloc(sizeof(char*) * (*len_file));
   char junk[MAX_STR_SIZE];
   int length_string;
   int line = 0;
-  while (! feof(fp_archivo)) {
-    fgets(junk, MAX_STR_SIZE, fp_archivo);
+  while (! feof(archivo)) {
+    fgets(junk, MAX_STR_SIZE, archivo);
     length_string = strlen(junk);
     for (int  i = 0; i < length_string; i++) {
       if (junk[i] == '\r' || junk[i] == '\n') junk[i] = '\0'; // si algún caracter no es alfabético, termina el string ahí
@@ -48,7 +48,7 @@ char **leerArchivo(char *file, int *len_file){
     strcpy(arreglo[line], junk);
     line++;
   }
-  fclose(fp_archivo);
+  fclose(archivo);
   return arreglo;
 }
 

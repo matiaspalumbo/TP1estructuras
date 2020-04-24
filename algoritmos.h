@@ -8,9 +8,11 @@
 // Definición del tipo de la función comparadora de dos elementos de una lista.
 typedef int (*FuncionComparadora) (void *dato1, void *dato2);
 
-// Compara dos numeros, retorna -1 si num1<num2
-int compNumeros(void* num1, void* num2);
+// Compara dos numeros
+int comparaNumeros(void *num1, void *num2);
 
+// Compara dos arreglos de char 
+int comparaStrings(void *str1, void *str2);
 
 // Ordena una lista utilizando Selection Sort
 GList selectionSort(GList lista, FuncionComparadora comparar);

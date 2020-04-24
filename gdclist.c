@@ -1,7 +1,7 @@
-#include "gdclist.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include "gdclist.h"
 
 
 GList gdclist_crear() {
@@ -42,17 +42,15 @@ int gdclist_longitud(GList lista) {
 
 GList gdclist_agregar_inicio(GList lista, void *dato) {
   GNodo *nuevoNodo = malloc(sizeof(GNodo));  
-  if (lista == NULL) {
+  if (gdclist_es_vacia(lista)) {
     nuevoNodo->dato = dato;
     nuevoNodo->sig = nuevoNodo;
     nuevoNodo->ant = nuevoNodo;
   } else {
     nuevoNodo->dato = dato;
     nuevoNodo->sig = lista;
+    GNodo *nodo = lista->ant; /* ahora 'nodo' apunta al ultimo elemento en la lista */
     lista->ant = nuevoNodo;
-    GNodo *nodo = lista;
-    for (; nodo->sig != lista; nodo = nodo->sig);
-    /* ahora 'nodo' apunta al ultimo elemento en la lista */
     nodo->sig = nuevoNodo;
     nuevoNodo->ant = nodo;
   }
@@ -60,7 +58,7 @@ GList gdclist_agregar_inicio(GList lista, void *dato) {
 }
 
 GList gdclist_agregar_final(GList lista, void *dato) {
-  if (lista == NULL) {
+  if (gdclist_es_vacia(lista)) {
     lista = malloc(sizeof(GNodo));
     lista->dato = dato;
     lista->sig = lista;
@@ -69,10 +67,8 @@ GList gdclist_agregar_final(GList lista, void *dato) {
     GNodo *nuevoNodo = malloc(sizeof(GNodo));
     nuevoNodo->dato = dato;
     nuevoNodo->sig = lista;
+    GNodo *nodo = lista->ant; /* ahora 'nodo' apunta al ultimo elemento en la lista */
     lista->ant = nuevoNodo;
-    GNodo *nodo = lista;
-    for (; nodo->sig != lista; nodo = nodo->sig);
-    /* ahora 'nodo' apunta al ultimo elemento en la lista */
     nodo->sig = nuevoNodo;
     nuevoNodo->ant = nodo;
   }

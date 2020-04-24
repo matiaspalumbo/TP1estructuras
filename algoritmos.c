@@ -5,17 +5,26 @@
 # include "algoritmos.h"
 
 
-
-// typedef int (*FuncionComparadora) (void *dato1, void *dato2);
-
-
-// Compara dos numeros, retorna -1 si num1<num2
-int compNumeros(void* num1, void* num2) {
+// Compara dos numeros
+int comparaNumeros(void* num1, void* num2) {
   int n1 = *(int*)num1, n2 = *(int*)num2;
   int val;
   if (n1 < n2) val = -1;
   else if (n1 > n2) val = 1;
   else val = 0;
+  return val;
+}
+
+// Compara dos arreglos de char 
+int comparaStrings(void *str1, void *str2) {
+  char *s1 = (char*)str1, *s2 = (char*)str2;
+  int val = 0;
+  int len = (strlen(s1) < strlen(s2)) ? strlen(s1) : strlen(s2);
+  for (int i = 0; (i < len) && (val == 0); i++) {
+    if (s1[i] < s2[i]) val = -1;
+    else if (s1[i] > s2[i]) val = 1;
+    else val = 0;
+  }
   return val;
 }
 
