@@ -5,12 +5,17 @@
 # include "algoritmos.h"
 
 
-// Compara dos numeros
-int comparaNumeros(void* num1, void* num2) {
-  int n1 = *(int*)num1, n2 = *(int*)num2;
+
+
+// typedef int (*FuncionComparadora) (void *dato1, void *dato2);
+
+
+// Compara dos numeros, retorna -1 si num1<num2
+int compEdades(void* persona1, void* persona2) {
+  int edad1 = ((Persona*)persona1)->edad, edad2 = ((Persona*)persona2)->edad;
   int val;
-  if (n1 < n2) val = -1;
-  else if (n1 > n2) val = 1;
+  if (edad1 < edad2) val = -1;
+  else if (edad1 > edad2) val = 1;
   else val = 0;
   return val;
 }
