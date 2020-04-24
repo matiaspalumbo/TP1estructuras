@@ -52,22 +52,18 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
     int indiceMinimo, longitud = gdclist_longitud(lista);
     void* datoAComparar = NULL;
     void* minimo = NULL;
-    void* nodoPivot = NULL;
+    // void* nodoPivot = NULL;
     for (int i = 0; i < longitud - 1; i++) {
-      // gdclist_recorrer(lista, imprimir_dato, DLIST_RECORRIDO_HACIA_ADELANTE); puts("");
       minimo = gdclist_leer(lista, i);
-      nodoPivot = minimo;
+      // nodoPivot = minimo;
       for (int j = i + 1; j < longitud; j++) {
-        // printf("longitud: %d\n", longitud);
-        // printf("%d\n", j);
         datoAComparar = gdclist_leer(lista, j);
         if (comparar(datoAComparar, minimo) < 0) { // si el elemento a comparar es menor al mínimo, éste se convierte en el nuevo mínimo.
           minimo = datoAComparar;
           indiceMinimo = j;
         }
       }
-      if (minimo != nodoPivot) {
-        printf("Iteración %d - Índice mínimo %d\n", i, indiceMinimo);
+      if (minimo != gdclist_leer(lista, i)) {
         gdclist_intercambiar(&lista, i, indiceMinimo);
       }
     }
@@ -82,7 +78,7 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
     for (int i = 1; i < gdclist_longitud(lista); i++) {
       aux = i;
       for (int j = aux-1; 0 <= j;) {
-        if (0 < comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux));) {
+        if (0 < comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux))) {
           gdclist_intercambiar(&lista, j, aux);
           aux--;
           j--;
