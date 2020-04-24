@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
   gdclist_recorrer(listaPersonas, imprimir_edad, DLIST_RECORRIDO_HACIA_ADELANTE);
   puts("");
 
-  listaPersonas = insertionSort(listaPersonas, compEdades);
+  listaPersonas = selectionSort(listaPersonas, compEdades);
 
   puts("Edades AFTER SORT");
   gdclist_recorrer(listaPersonas, imprimir_edad, DLIST_RECORRIDO_HACIA_ADELANTE);

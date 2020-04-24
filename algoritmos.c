@@ -62,25 +62,20 @@ int comparaStrings(void *str1, void *str2) {
 GList selectionSort(GList lista, FuncionComparadora comparar) {
   if (!gdclist_es_vacia(lista)) {
     int indiceMinimo, longitud = gdclist_longitud(lista);
-    void* datoAComparar = NULL;
-    void* minimo = NULL;
     for (int i = 0; i < longitud - 1; i++) {
-      minimo = gdclist_leer(lista, i);
+      indiceMinimo = i;
       for (int j = i + 1; j < longitud; j++) {
-        datoAComparar = gdclist_leer(lista, j);
-        if (comparar(datoAComparar, minimo) < 0) { // si el elemento a comparar es menor al mínimo, éste se convierte en el nuevo mínimo.
-          minimo = datoAComparar;
+        if (comparar(gdclist_leer(lista, j), gdclist_leer(lista, indiceMinimo)) < 0) {
           indiceMinimo = j;
         }
       }
-      if (minimo != gdclist_leer(lista, i)) {
+      if (gdclist_leer(lista, indiceMinimo) != gdclist_leer(lista, i)) {
         gdclist_intercambiar(&lista, i, indiceMinimo);
       }
     }
   }
   return lista;
 }
-
 
 GList insertionSort(GList lista, FuncionComparadora comparar) { 
   if (!gdclist_es_vacia(lista)) {
