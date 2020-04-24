@@ -23,7 +23,7 @@ typedef struct {
   char *lugarDeNacimiento; //pais o capital
 } Persona
 
-// gdclist_agregar_final(lista, (void*)personaPTR); 
+gdclist_agregar_final(lista, (void*)personaPTR); 
 
 void leerPersonas(char *file, int *len_file) {
   FILE *fp_personas;
