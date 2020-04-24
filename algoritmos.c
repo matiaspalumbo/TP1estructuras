@@ -2,13 +2,11 @@
 # include <stdio.h>
 # include <math.h>
 # include "gdclist.h"
+# include "algoritmos.h"
 
 
-/* 
-Retorna un entero menor que, igual a, o mayor que 0 , si el primer argumento es considerado, 
-respectivamente, menor que, igual a o mayor que el segundo.
-*/
-typedef int (*FuncionComparadora) (void *dato1, void *dato2);
+
+// typedef int (*FuncionComparadora) (void *dato1, void *dato2);
 
 
 // Compara dos numeros, retorna -1 si num1<num2
