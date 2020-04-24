@@ -25,7 +25,7 @@ GList leerPersonas(char *file) {
   GList listaPersonas = gdclist_crear();
   char edad[4];
   while (! feof(fp_personas)) {
-    Persona* persona = malloc(sizeof(Persona));
+    Persona *persona = malloc(sizeof(Persona));
     // persona->nombre = "Manuel";
     persona->nombre = malloc(sizeof(char)*MAX_STR_SIZE);
     persona->lugarDeNacimiento = malloc(sizeof(char)*MAX_STR_SIZE);

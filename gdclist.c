@@ -22,6 +22,28 @@ void gdclist_destruir(GList lista) {
   }
 }
 
+void destruir_persona(void *dato) {
+  Persona *persona = (Persona*)dato;
+  free(persona->nombre);
+  free(persona->lugarDeNacimiento);
+  free(persona);
+}
+
+void GList_destruir_persona(GList lista, Destruir destruir_persona) {
+  if (lista != NULL) {
+    GNodo *nodo = lista;
+    for (; nodo->sig != lista; nodo = nodo->sig);
+    nodo->sig = NULL;
+  }
+  GNodo *nodoAEliminar;
+  while (lista != NULL) {
+    nodoAEliminar = lista;
+    lista = lista->sig;
+    destruir_persona(nodoAEliminar->dato);
+    free(nodoAEliminar);
+  }
+}
+
 int gdclist_es_vacia(GList lista) {
   return lista == NULL;
 }
@@ -84,24 +106,23 @@ void *gdclist_leer(GList lista, int pos) {
   return temp->dato;
 }
 
-
-GList gdclist_intercambiar(GList *lista, int posicion1, int posicion2) {
-  assert(!gdclist_es_vacia(*lista));
-  assert(posicion1 >= 0 && posicion1 < gdclist_longitud(*lista));
-  assert(posicion2 >= 0 && posicion2 < gdclist_longitud(*lista));
+GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
+  assert(!gdclist_es_vacia(lista));
+  assert(posicion1 >= 0 && posicion1 < gdclist_longitud(lista));
+  assert(posicion2 >= 0 && posicion2 < gdclist_longitud(lista));
 
   GNodo *nodoA, *nodoB;
   if (posicion1 != posicion2) {
     int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
     int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
-    GNodo* temp = *lista;
+    GNodo *temp = lista;
     for (int i = 0; i < mayor+1; i++) {
       if (i == menor) nodoA = temp;
       if (i == mayor) nodoB = temp;
       temp = temp->sig;
     } /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
 
-    if (menor == 0 && mayor == gdclist_longitud(*lista)-1) {
+    if (menor == 0 && mayor == gdclist_longitud(lista)-1) {
       nodoA->ant = nodoB->ant;
       nodoB->ant->sig = nodoA;
       GNodo *aux = nodoA->sig;
@@ -132,29 +153,15 @@ GList gdclist_intercambiar(GList *lista, int posicion1, int posicion2) {
       }
     }
 
-    if (menor == 0) *lista = nodoB;
+    if (menor == 0) lista = nodoB;
   }
 
-  return *lista;
+  return lista;
 }
 
-void gdclist_recorrer_adelante(GList lista, FuncionVisitante visit) {
+void gdclist_recorrer(GList lista, FuncionVisitante visit) {
   GNodo * nodo = lista;
   for (; nodo->sig != lista; nodo = nodo->sig)
     visit(nodo->dato);
   visit(nodo->dato);
-}
-
-void gdclist_recorrer_atras(GList lista, FuncionVisitante visit) {
-  GNodo * nodo = lista->ant;
-  for (; nodo->ant != lista->ant; nodo = nodo->ant)
-    visit(nodo->dato);
-  visit(nodo->dato);
-}
-
-void gdclist_recorrer(GList lista, FuncionVisitante visit, DListOrdenDeRecorrido orden) {
-  if (lista != NULL) {
-    if (orden) gdclist_recorrer_atras(lista, visit);
-    else gdclist_recorrer_adelante(lista, visit);
-  }
 }

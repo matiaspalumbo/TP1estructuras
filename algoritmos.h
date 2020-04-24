@@ -4,12 +4,6 @@
 #include <stddef.h>
 #include "gdclist.h"
 
-typedef struct {
-  char *nombre;
-  int edad;
-  char *lugarDeNacimiento; //pais o capital
-} Persona;
-
 
 // Definición del tipo de la función comparadora de dos elementos de una lista.
 typedef int (*FuncionComparadora) (void *dato1, void *dato2);

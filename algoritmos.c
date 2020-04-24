@@ -7,9 +7,6 @@
 
 
 
-// typedef int (*FuncionComparadora) (void *dato1, void *dato2);
-
-
 // Compara dos numeros, retorna -1 si num1<num2
 int compEdades(void* persona1, void* persona2) {
   int edad1 = ((Persona*)persona1)->edad, edad2 = ((Persona*)persona2)->edad;
@@ -74,7 +71,7 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
         }
       }
       if (minimo != gdclist_leer(lista, i)) {
-        gdclist_intercambiar(&lista, i, indiceMinimo);
+        gdclist_intercambiar(lista, i, indiceMinimo);
       }
     }
   }
@@ -90,7 +87,7 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
       j = aux-1;
       while (0 <= j) {
         if (0 < comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux))) {
-          gdclist_intercambiar(&lista, j, aux);
+          gdclist_intercambiar(lista, j, aux);
           aux--;
           j--;
         } else j = -1;

@@ -4,7 +4,7 @@
 #include "algoritmos.h"
 
 static void imprimir_dato(void * dato) {
-  printf("%s ", (char*)dato);
+  printf("%d ", *(int*)dato);
 }
 
 
@@ -16,17 +16,17 @@ int main(int argc, char *argv[]) {
   lista = gdclist_agregar_inicio(lista, &a2);
   lista = gdclist_agregar_inicio(lista, &a3);
   lista = gdclist_agregar_inicio(lista, &a4);
-  // lista = gdclist_agregar_final(lista, &a5);
+  lista = gdclist_agregar_final(lista, &a5);
 
-  gdclist_recorrer(lista, imprimir_dato, DLIST_RECORRIDO_HACIA_ADELANTE);
+  gdclist_recorrer(lista, imprimir_dato);
   puts("");
 
-  lista = selectionSort(lista, comparaNumeros);
-  // lista = gdclist_intercambiar(&lista, 0, 4);
+  // lista = selectionSort(lista, comparaNumeros);
+  lista = gdclist_intercambiar(lista, 1, 4);
   // lista = insertionSort(lista, comparaNumeros);
   // printf("Lista ordenada.\n");
 
-  gdclist_recorrer(lista, imprimir_dato, DLIST_RECORRIDO_HACIA_ADELANTE);
+  gdclist_recorrer(lista, imprimir_dato);
   puts("");
 
   gdclist_destruir(lista);
