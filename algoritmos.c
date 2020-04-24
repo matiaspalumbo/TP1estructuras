@@ -89,3 +89,10 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
   return lista;
 }
 
+
+GList mergeSort(GList lista, FuncionComparadora comparar) {
+  if (!gdclist_es_vacia(lista)) {
+    
+  }
+  return lista;
+}

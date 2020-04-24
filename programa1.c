@@ -41,7 +41,7 @@ char **leerArchivo(char *file, int *len_file){
   while (! feof(fp_archivo)) {
     fgets(junk, MAX_STR_SIZE, fp_archivo);
     length_string = strlen(junk);
-    for (int  i = 0; i<length_string; i++) {
+    for (int  i = 0; i < length_string; i++) {
       if (junk[i] == '\r' || junk[i] == '\n') junk[i] = '\0'; // si algún caracter no es alfabético, termina el string ahí
     }
     arreglo[line] = malloc(sizeof(char) * (length_string+1));
@@ -73,6 +73,7 @@ void escribirPersonas(char **nombres, char **paises, int nPersonas, int len_nomb
 
 int main(int argc, char **argv) {
   /*
+  argc == 5
   argv[0] es el nombre del ejecutable
   argv[1] es nombres1.txt
   argv[2] es paises.txt
@@ -87,7 +88,7 @@ int main(int argc, char **argv) {
   char **nombres = leerArchivo(argv[1], &len_nombres);
   char **paises = leerArchivo(argv[2], &len_paises);
   escribirPersonas(nombres, paises, nPersonas, len_nombres, len_paises, argv[3]);
-  // for (int i =0 ; i<10; i++) printf("%s", nombres[i]);
+
   for (int i = 0; i < len_nombres; i++) free(nombres[i]);
   for (int i = 0; i < len_paises; i++) free(paises[i]);
   free(nombres);
