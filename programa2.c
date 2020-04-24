@@ -9,9 +9,14 @@
 
 #define MAX_STR_SIZE 70
 
-static void imprimir_persona(void * dato) {
-  printf("%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
+// static void imprimir_persona(void * dato) {
+//   printf("%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
+// }
+
+static void imprimir_edad(void * dato) {
+  printf("%d  ", ((Persona*) dato)->edad);
 }
+
 
 GList leerPersonas(char *file) {
   printf("Holaaa\n");
@@ -44,12 +49,16 @@ int main(int argc, char **argv) {
   printf("wtf\n");
   GList listaPersonas = leerPersonas(argv[1]);
 
-  gdclist_recorrer(listaPersonas, imprimir_persona, DLIST_RECORRIDO_HACIA_ADELANTE);
+  // gdclist_recorrer(listaPersonas, imprimir_persona, DLIST_RECORRIDO_HACIA_ADELANTE);
+  puts("Edades BEFORE SORT");
+  gdclist_recorrer(listaPersonas, imprimir_edad, DLIST_RECORRIDO_HACIA_ADELANTE);
+  puts("");
 
-  listaPersonas = selectionSort(listaPersonas, compEdades);
+  listaPersonas = insertionSort(listaPersonas, compEdades);
 
-  gdclist_recorrer(listaPersonas, imprimir_persona, DLIST_RECORRIDO_HACIA_ADELANTE);
-
+  puts("Edades AFTER SORT");
+  gdclist_recorrer(listaPersonas, imprimir_edad, DLIST_RECORRIDO_HACIA_ADELANTE);
+  puts("");
 //   gdclist_destruir(listaPersonas);
 
   return 0;

@@ -64,10 +64,8 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
     int indiceMinimo, longitud = gdclist_longitud(lista);
     void* datoAComparar = NULL;
     void* minimo = NULL;
-    // void* nodoPivot = NULL;
     for (int i = 0; i < longitud - 1; i++) {
       minimo = gdclist_leer(lista, i);
-      // nodoPivot = minimo;
       for (int j = i + 1; j < longitud; j++) {
         datoAComparar = gdclist_leer(lista, j);
         if (comparar(datoAComparar, minimo) < 0) { // si el elemento a comparar es menor al mínimo, éste se convierte en el nuevo mínimo.
