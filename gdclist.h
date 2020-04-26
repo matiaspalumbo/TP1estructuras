@@ -31,7 +31,7 @@ GList gdclist_crear();
 void gdclist_destruir(GList lista);
 
 // Destruccion de la lista donde el dato es una persona.
-void GList_destruir_persona(GList lista, Destruir destruir_persona);
+void gdclist_destruir_persona(GList lista, Destruir destruir_persona);
 
 // Determina si la lista es vacía.
 int gdclist_es_vacia(GList lista);

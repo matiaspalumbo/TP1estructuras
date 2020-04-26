@@ -29,7 +29,7 @@ void destruir_persona(void *dato) {
   free(persona);
 }
 
-void GList_destruir_persona(GList lista, Destruir destruir_persona) {
+void gdclist_destruir_persona(GList lista, Destruir destruir_persona) {
   if (lista != NULL) {
     GNodo *nodo = lista;
     for (; nodo->sig != lista; nodo = nodo->sig);
