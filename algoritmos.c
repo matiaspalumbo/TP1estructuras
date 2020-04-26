@@ -6,6 +6,12 @@
 
 
 
+void destruir_persona(void *dato) {
+  Persona *persona = (Persona*)dato;
+  free(persona->nombre);
+  free(persona->lugarDeNacimiento);
+  free(persona);
+}
 
 // Compara dos numeros, retorna -1 si num1<num2
 int compEdades(void* persona1, void* persona2) {

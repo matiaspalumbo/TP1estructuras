@@ -8,40 +8,17 @@ GList gdclist_crear() {
   return NULL;
 }
 
-void gdclist_destruir(GList lista) {
-  if (lista != NULL) {
-    GNodo *nodo = lista;
-    for (; nodo->sig != lista; nodo = nodo->sig);
-    nodo->sig = NULL;
-  }
-  GNodo *nodoAEliminar;
-  while (lista != NULL) {
-    nodoAEliminar = lista;
+void gdclist_destruir(GList lista, Destruir funcion_destructora) {
+  GNodo *nodoFinal = lista->ant;
+  while (lista != nodoFinal) {
+    if (funcion_destructora != NULL)
+      funcion_destructora(lista->dato);
+    free(lista);
     lista = lista->sig;
-    free(nodoAEliminar);
   }
-}
-
-void destruir_persona(void *dato) {
-  Persona *persona = (Persona*)dato;
-  free(persona->nombre);
-  free(persona->lugarDeNacimiento);
-  free(persona);
-}
-
-void gdclist_destruir_persona(GList lista, Destruir destruir_persona) {
-  if (lista != NULL) {
-    GNodo *nodo = lista;
-    for (; nodo->sig != lista; nodo = nodo->sig);
-    nodo->sig = NULL;
-  }
-  GNodo *nodoAEliminar;
-  while (lista != NULL) {
-    nodoAEliminar = lista;
-    lista = lista->sig;
-    destruir_persona(nodoAEliminar->dato);
-    free(nodoAEliminar);
-  }
+  if (funcion_destructora != NULL)
+    funcion_destructora(nodoFinal->dato);
+  free(nodoFinal);
 }
 
 int gdclist_es_vacia(GList lista) {

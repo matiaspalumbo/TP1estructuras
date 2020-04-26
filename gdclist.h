@@ -12,11 +12,6 @@ typedef struct _GNodo {
 
 typedef GNodo *GList;
 
-typedef struct {
-  char *nombre;
-  int edad;
-  char *lugarDeNacimiento; //pais o capital
-} Persona;
 
 
 typedef void (*FuncionVisitante) (void *dato);
@@ -28,10 +23,7 @@ typedef void (*Destruir) (void *dato);
 GList gdclist_crear();
 
 // Destruccion de la lista.
-void gdclist_destruir(GList lista);
-
-// Destruccion de la lista donde el dato es una persona.
-void gdclist_destruir_persona(GList lista, Destruir destruir_persona);
+void gdclist_destruir(GList lista, Destruir funcion_destructora);
 
 // Determina si la lista es vacía.
 int gdclist_es_vacia(GList lista);
