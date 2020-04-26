@@ -105,6 +105,9 @@ GList mergeSort(GList lista, FuncionComparadora comparar) {
   }
   return lista;
 }
+
+
+
 // MERGE SORT
 // function merge(left, right) is
 //     var result := empty list
