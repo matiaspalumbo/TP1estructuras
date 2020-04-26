@@ -51,13 +51,13 @@ int main(int argc, char **argv) {
 
   // gdclist_recorrer(listaPersonas, imprimir_persona, DLIST_RECORRIDO_HACIA_ADELANTE);
   puts("Edades BEFORE SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad, DLIST_RECORRIDO_HACIA_ADELANTE);
+  gdclist_recorrer(listaPersonas, imprimir_edad);
   puts("");
 
   listaPersonas = selectionSort(listaPersonas, compEdades);
 
   puts("Edades AFTER SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad, DLIST_RECORRIDO_HACIA_ADELANTE);
+  gdclist_recorrer(listaPersonas, imprimir_edad);
   puts("");
 //   gdclist_destruir(listaPersonas);
 
