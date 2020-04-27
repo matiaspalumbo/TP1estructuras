@@ -99,61 +99,81 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
 }
 
 
-GList mergeSort(GList lista, FuncionComparadora comparar) {
-  if (!gdclist_es_vacia(lista)) {
-    
+GList mergeSort(GList lista, FuncionComparadora comparar, int limite) { // Ordena hasta la posicion limite inclusive
+  GList listaOrdenada;
+  if (gdclist_longitud(lista) == 1 || gdclist_longitud(lista) == 0)
+    listaOrdenada = lista;
+  else {
+    GNodo* mitad = lista;
+    int i = 0;
+    while (i < ceil((double) limite / 2.0)) {
+      mitad = mitad->sig;
+      i ++;
+    }
+    GList izqOrdenado = mergeSort(lista, comparar, i-1);
+    GList derOrdenado = mergeSort(mitad, comparar, gdclist_longitud(lista) - i - 1); // PREGUNTAR POR DEF GDCLIST_LONGITUD
+    listaOrdenada = mergeSortAux(izqOrdenado, derOrdenado, comparar);
+    }
+  return listaOrdenada;
+}
+
+GList merge(GList lista1, GList lista2, FuncionComparadora comparar) {
+  int pos1 = 0, pos2 = 0;
+  int sumaLongitudes = gdclist_longitud(lista1) + gdclist_longitud(lista2);
+  GList listaOrdenada;
+  for (int i = 0; i < sumaLongitudes; i++) {
+    if (comparar(gdclist_leer(lista1, pos1), gdclist_leer(lista2, pos2)) < 0) {
+      if (i == 0)
+        listaOrdenada = 
+      pos1++;
+    }
   }
-  return lista;
 }
 
 
-
 // MERGE SORT
-// function merge(left, right) is
-//     var result := empty list
+function merge_sort(list m) is
+    // Base case. A list of zero or one elements is sorted, by definition.
+    if length of m ≤ 1 then
+        return m
 
-//     while left is not empty and right is not empty do
-//         if first(left) ≤ first(right) then
-//             append first(left) to result
-//             left := rest(left)
-//         else
-//             append first(right) to result
-//             right := rest(right)
+    // Recursive case. First, divide the list into equal-sized sublists
+    // consisting of the first half and second half of the list.
+    // This assumes lists start at index 0.
+    var left := empty list
+    var right := empty list
+    for each x with index i in m do
+        if i < (length of m)/2 then  
+            add x to left  // principio de la lista en primer nodo
+        else
+            add x to right // busco la mitad de la lista
 
-//     // Either left or right may have elements left; consume them.
-//     // (Only one of the following loops will actually be entered.)
-//     while left is not empty do
-//         append first(left) to result
-//         left := rest(left)
-//     while right is not empty do
-//         append first(right) to result
-//         right := rest(right)
-//     return result
+    // Recursively sort both sublists.
+    left := merge_sort(left)
+    right := merge_sort(right)
 
-// function merge_sort(node head) is
-//     // return if empty list
-//     if head = nil then
-//         return nil
-//     var node array[32]; initially all nil
-//     var node result
-//     var node next
-//     var int  i
-//     result := head
-//     // merge nodes into array
-//     while result ≠ nil do
-//          next := result.next;
-//          result.next := nil
-//          for(i = 0; (i < 32) && (array[i] ≠ nil); i += 1) do
-//               result := merge(array[i], result)
-//               array[i] := nil
-//          // do not go past end of array
-//          if i = 32 then
-//                i -= 1
-//          array[i] := result
-//          result := next
-//     // merge array into single list
-//     result := nil
-//     for (i = 0; i < 32; i += 1) do
-//          result := merge(array[i], result)
-//     return result
+    // Then merge the now-sorted sublists.
+    return merge(left, right)
 
+In this example, the merge function merges the left and right sublists.
+
+function merge(left, right) is
+    var result := empty list
+
+    while left is not empty and right is not empty do
+        if first(left) ≤ first(right) then
+            append first(left) to result
+            left := rest(left)
+        else
+            append first(right) to result
+            right := rest(right)
+
+    // Either left or right may have elements left; consume them.
+    // (Only one of the following loops will actually be entered.)
+    while left is not empty do
+        append first(left) to result
+        left := rest(left)
+    while right is not empty do
+        append first(right) to result
+        right := rest(right)
+    return result
