@@ -9,17 +9,14 @@ GList gdclist_crear() {
 }
 
 void gdclist_destruir(GList lista, Destruir funcion_destructora) {
-  GNodo *nodoFinal = lista->ant;
   lista->ant->sig = NULL;
+  GNodo *nodoAEliminar;
   while (lista != NULL) {
-    // if (funcion_destructora != NULL)
-      funcion_destructora(lista->dato);
-    free(lista);
+    nodoAEliminar = lista;
     lista = lista->sig;
+    funcion_destructora(nodoAEliminar->dato);
+    free(nodoAEliminar);
   }
-  // if (funcion_destructora != NULL)
-    funcion_destructora(nodoFinal->dato);
-  free(nodoFinal);
 }
 
 int gdclist_es_vacia(GList lista) {
