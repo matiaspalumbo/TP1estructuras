@@ -10,7 +10,8 @@ GList gdclist_crear() {
 
 void gdclist_destruir(GList lista, Destruir funcion_destructora) {
   GNodo *nodoFinal = lista->ant;
-  while (lista != nodoFinal) {
+  lista->ant->sig = NULL;
+  while (lista != NULL) {
     // if (funcion_destructora != NULL)
       funcion_destructora(lista->dato);
     free(lista);
