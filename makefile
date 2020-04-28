@@ -10,7 +10,7 @@ LISTAS = gdclist.c
 
 # ejecutable de programa 1
 programa1 : programa1.c $(NOMBRES) $(PAISES)
-	gcc -Wall -Werror -Wextra $@ programa1.c
+	gcc -Wall -Werror -Wextra -o $@ programa1.c
 
 # ejecuta programa1 con los correspondientes argumentos del main
 $(PERSONAS) : programa1 $(NOMBRES) $(PAISES)
@@ -26,7 +26,7 @@ algoritmos.o : algoritmos.c algoritmos.h gdclist.h
 
 # ejecutable de programa2
 programa2 : programa2.c $(PERSONAS) gdclist.o algoritmos.o
-	gcc -o $@ programa2.c gdclist.o algoritmos.o 
+	gcc -Wall -Werror -Wextra -o $@ programa2.c gdclist.o algoritmos.o 
 	
 # ejecuta programa2 con los correspondientes argumnetos del main
 $(FINAL) : programa2 $(PERSONAS)

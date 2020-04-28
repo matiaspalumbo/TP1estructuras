@@ -108,7 +108,7 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
       resultado = gdclist_agregar_final(resultado, listaL->dato);
       listaL = listaL->sig;
     } else {
-      resultado = gdclist_agregar-final(resultado, listaR->dato);
+      resultado = gdclist_agregar_final(resultado, listaR->dato);
       listaR = listaR->sig;
     }
   }
