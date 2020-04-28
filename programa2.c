@@ -43,20 +43,20 @@ int main(int argc, char **argv) {
 //   */
   GList listaPersonas = leerPersonas(argv[1]);
 
-  // gdclist_recorrer(listaPersonas, imprimir_persona);
+  gdclist_recorrer(listaPersonas, imprimir_persona);
   // puts("Edades BEFORE SORT");
   // gdclist_recorrer(listaPersonas, imprimir_edad);
-  // puts("");
-  printf("lo tira antes de la función\n");
-  listaPersonas = selectionSort(listaPersonas, compEdades);
+  puts("");
+  // printf("lo tira antes de la función\n");
+  listaPersonas = insertionSort(listaPersonas, compEdades);
   // // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 49);
 
   // puts("Edades AFTER SORT");
-  // gdclist_recorrer(listaPersonas, imprimir_edad);
-  // puts("");
-  printf("lo tira después de la función\n");
+  gdclist_recorrer(listaPersonas, imprimir_persona);
+  puts("");
+  // printf("lo tira después de la función\n");
   gdclist_destruir(listaPersonas, destruir_persona);
-  printf("lo tira después de destruir la lista\n");
+  // printf("lo tira después de destruir la lista\n");
 
   return 0;
 }
