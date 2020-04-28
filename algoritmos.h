@@ -33,13 +33,7 @@ GList selectionSort(GList lista, FuncionComparadora comparar);
 GList insertionSort(GList lista, FuncionComparadora comparar);
 
 // Ordena una lista utilizando Merge Sort
-// GList mergeSort(GList lista, FuncionComparadora comparar) {
-//   if (!gdclist_es_vacia(lista)) {
-    
-//   }
-//   return lista;
-// }
-
+GList mergeSort(GList lista, FuncionComparadora comparar, int limite);
 
 
 
