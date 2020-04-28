@@ -11,12 +11,12 @@ GList gdclist_crear() {
 void gdclist_destruir(GList lista, Destruir funcion_destructora) {
   GNodo *nodoFinal = lista->ant;
   while (lista != nodoFinal) {
-    if (funcion_destructora != NULL)
+    // if (funcion_destructora != NULL)
       funcion_destructora(lista->dato);
     free(lista);
     lista = lista->sig;
   }
-  if (funcion_destructora != NULL)
+  // if (funcion_destructora != NULL)
     funcion_destructora(nodoFinal->dato);
   free(nodoFinal);
 }

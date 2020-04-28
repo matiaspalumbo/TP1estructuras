@@ -67,24 +67,48 @@ int compNombres(void *persona1, void *persona2) {
 
 // the best (i think) shot at selection sort
 
+
 GList selectionSort(GList lista, FuncionComparadora comparar) {
   if (!gdclist_es_vacia(lista)) {
-    int indiceMinimo, longitud = gdclist_longitud(lista);
+    GNodo* nodoMinimo = lista, *nodoAComparar, *nodoActual = lista;
+    int longitud = gdclist_longitud(lista), indiceMinimo;
     for (int i = 0; i < longitud - 1; i++) {
       indiceMinimo = i;
-      for (int j = i + 1; j < longitud; j++) {
-        if (comparar(gdclist_leer(lista, j), gdclist_leer(lista, indiceMinimo)) < 0) {
+      nodoMinimo = nodoActual;
+      nodoAComparar = nodoActual->sig;
+      for (int j = i + 1; (j < longitud); j++) {
+        if (comparar(nodoAComparar->dato, nodoMinimo->dato) < 0) {
+          nodoMinimo = nodoAComparar;
           indiceMinimo = j;
         }
+        nodoAComparar = nodoAComparar->sig;
       }
-      if (gdclist_leer(lista, indiceMinimo) != gdclist_leer(lista, i)) {
+      if (nodoActual != nodoMinimo)
         lista = gdclist_intercambiar(lista, i, indiceMinimo);
-
-      }
+      nodoActual = nodoActual->sig;
     }
   }
   return lista;
 }
+
+
+// GList selectionSort(GList lista, FuncionComparadora comparar) {
+//   if (!gdclist_es_vacia(lista)) {
+//     int indiceMinimo, longitud = gdclist_longitud(lista);
+//     for (int i = 0; i < longitud - 1; i++) {
+//       indiceMinimo = i;
+//       for (int j = i + 1; j < longitud; j++) {
+//         if (comparar(gdclist_leer(lista, j), gdclist_leer(lista, indiceMinimo)) < 0) {
+//           indiceMinimo = j;
+//         }
+//       }
+//       if (gdclist_leer(lista, indiceMinimo) != gdclist_leer(lista, i)) {
+//         lista = gdclist_intercambiar(lista, i, indiceMinimo);
+//       }
+//     }
+//   }
+//   return lista;
+// }
 
 GList insertionSort(GList lista, FuncionComparadora comparar) { 
   if (!gdclist_es_vacia(lista)) {
