@@ -1,9 +1,14 @@
 # include <string.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
 # include "gdclist.h"
 # include "algoritmos.h"
 
+
+void imprimir_edad(void * dato) {
+  printf("%d  ", ((Persona*) dato)->edad);
+}
 
 
 void destruir_persona(void *dato) {
@@ -73,7 +78,8 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
         }
       }
       if (gdclist_leer(lista, indiceMinimo) != gdclist_leer(lista, i)) {
-        gdclist_intercambiar(lista, i, indiceMinimo);
+        lista = gdclist_intercambiar(lista, i, indiceMinimo);
+
       }
     }
   }
@@ -88,7 +94,7 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
       j = aux-1;
       while (0 <= j) {
         if (0 < comparar(gdclist_leer(lista, j), gdclist_leer(lista, aux))) {
-          gdclist_intercambiar(lista, j, aux);
+          lista = gdclist_intercambiar(lista, j, aux);
           aux--;
           j--;
         } else j = -1;
@@ -103,41 +109,48 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
   listaL->ant->sig = NULL;
   listaR->ant->sig = NULL;
   GList resultado = NULL;
+
   while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
     if (comparar(gdclist_leer(listaL, 0), gdclist_leer(listaR, 0)) <= 0) {
       resultado = gdclist_agregar_final(resultado, listaL->dato);
       listaL = listaL->sig;
     } else {
-      resultado = gdclist_agregar-final(resultado, listaR->dato);
+      resultado = gdclist_agregar_final(resultado, listaR->dato);
       listaR = listaR->sig;
     }
   }
   // Only one of the following loops will actually be entered.
   while (!gdclist_es_vacia(listaL)) {
-    resultado = gdclist_agregar_leer(listaL, 0);
+    resultado = gdclist_agregar_final(resultado, listaL->dato);
     listaL = listaL->sig;
   }
   while (!gdclist_es_vacia(listaR)) {
-    resultado = gdclist_agregar_leer(listaR, 0);
-    listaL = listaR->sig;
+    resultado = gdclist_agregar_final(resultado, listaR->dato);
+    listaR = listaR->sig;
   }
+  return resultado;
 }
 
 
-GList mergeSort(GList lista, FuncionComparadora comparar, int limite) { // Ordena hasta la posicion limite inclusive
+GList mergeSort(GList lista, FuncionComparadora comparar) { // Ordena hasta la posicion limite inclusive
   GList listaOrdenada;
-  if (gdclist_longitud(lista) == 1 || gdclist_longitud(lista) == 0)
+  if (gdclist_longitud(lista) == 1 || gdclist_es_vacia(lista))
     listaOrdenada = lista;
   else {
-    GNodo* mitad = lista;
-    int i = 0;
-    while (i < ceil((double) limite / 2.0)) {
-      mitad = mitad->sig;
-      i ++;
+    GList izqOrdenado = gdclist_crear();
+    GList derOrdenado = gdclist_crear();
+    int mitad = (ceil(((double) gdclist_longitud(lista)) / 2.0));
+    GNodo* temp = lista;
+    for (int i = 0; i < gdclist_longitud(lista); i++) {
+      if (i < mitad)
+        izqOrdenado = gdclist_agregar_final(izqOrdenado, temp->dato);
+      else
+        derOrdenado = gdclist_agregar_final(derOrdenado, temp->dato);
+      temp = temp->sig;
     }
-    GList izqOrdenado = mergeSort(lista, comparar, i-1);
-    GList derOrdenado = mergeSort(mitad, comparar, gdclist_longitud(lista) - i - 1); // PREGUNTAR POR DEF GDCLIST_LONGITUD
-    listaOrdenada = mergeSortAux(izqOrdenado, derOrdenado, comparar);
+    izqOrdenado = mergeSort(izqOrdenado, comparar);
+    derOrdenado = mergeSort(derOrdenado, comparar);
+    listaOrdenada = merge(izqOrdenado, derOrdenado, comparar);
     }
   return listaOrdenada;
 }
@@ -204,4 +217,4 @@ function merge(left, right) is
         append first(right) to result
         right := rest(right)
     return result
-/*
+*/

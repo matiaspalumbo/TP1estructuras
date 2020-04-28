@@ -20,6 +20,8 @@ typedef int (*FuncionComparadora) (void *dato1, void *dato2);
 
 void destruir_persona(void *dato);
 
+void imprimir_edad(void * dato);
+
 // Compara dos edades, retorna -1 si edad1<edad2
 int compEdades(void *persona1, void *persona2);
 
@@ -33,7 +35,7 @@ GList selectionSort(GList lista, FuncionComparadora comparar);
 GList insertionSort(GList lista, FuncionComparadora comparar);
 
 // Ordena una lista utilizando Merge Sort
-GList mergeSort(GList lista, FuncionComparadora comparar, int limite);
+GList mergeSort(GList lista, FuncionComparadora comparar);
 
 
 

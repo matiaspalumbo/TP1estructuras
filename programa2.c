@@ -13,11 +13,6 @@
 //   printf("%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
 // }
 
-static void imprimir_edad(void * dato) {
-  printf("%d  ", ((Persona*) dato)->edad);
-}
-
-
 GList leerPersonas(char *file) {
   FILE *fp_personas;
   fp_personas = fopen(file, "r"); // Abre el archivo pasado como parametro.
@@ -39,7 +34,7 @@ GList leerPersonas(char *file) {
 
 
 int main(int argc, char **argv) {
-  assert(argc == 3);
+  // assert(argc == 3);
 //   /* 
 //   argc == 3
 //   argv[0] es el nombre del ejecutable
@@ -48,16 +43,17 @@ int main(int argc, char **argv) {
 //   */
   GList listaPersonas = leerPersonas(argv[1]);
 
-  // gdclist_recorrer(listaPersonas, imprimir_persona);
-  puts("Edades BEFORE SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad);
-  puts("");
+  // // gdclist_recorrer(listaPersonas, imprimir_persona);
+  // puts("Edades BEFORE SORT");
+  // gdclist_recorrer(listaPersonas, imprimir_edad);
+  // puts("");
 
   listaPersonas = selectionSort(listaPersonas, compEdades);
+  // // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 49);
 
-  puts("Edades AFTER SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad);
-  puts("");
+  // puts("Edades AFTER SORT");
+  // gdclist_recorrer(listaPersonas, imprimir_edad);
+  // puts("");
   gdclist_destruir(listaPersonas, destruir_persona);
 
   return 0;
