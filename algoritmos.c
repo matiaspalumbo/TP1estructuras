@@ -14,7 +14,7 @@ void destruir_persona(void *dato) {
 }
 
 // Compara dos numeros, retorna -1 si num1<num2
-int compEdades(void* persona1, void* persona2) {
+int compEdades(void *persona1, void *persona2) {
   int edad1 = ((Persona*)persona1)->edad, edad2 = ((Persona*)persona2)->edad;
   int val;
   if (edad1 < edad2) val = -1;
@@ -24,8 +24,8 @@ int compEdades(void* persona1, void* persona2) {
 }
 
 // Compara dos arreglos de char 
-int comparaStrings(void *str1, void *str2) {
-  char *s1 = (char*)str1, *s2 = (char*)str2;
+int compNombres(void *persona1, void *persona2) {
+  char *s1 = ((Persona*)persona1)->nombre, *s2 = ((Persona*)persona2)->nombre;
   int val = 0;
   int len = (strlen(s1) < strlen(s2)) ? strlen(s1) : strlen(s2);
   for (int i = 0; (i < len) && (val == 0); i++) {
@@ -73,7 +73,7 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
         }
       }
       if (gdclist_leer(lista, indiceMinimo) != gdclist_leer(lista, i)) {
-        gdclist_intercambiar(&lista, i, indiceMinimo);
+        gdclist_intercambiar(lista, i, indiceMinimo);
       }
     }
   }
@@ -99,37 +99,41 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
 }
 
 
+GList merge(GList listaL, GList listaR) {
+  listaL->ant->sig = NULL;
+  listaR->ant->sig = NULL;
+  GList resultado = NULL;
+  while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
+    if (comparar(gdclist_leer(listaL, 0), gdclist_leer(listaR, 0)) <= 0) {
+      resultado = gdclist_agregar_final(resultado, listaL->dato);
+      listaL = listaL->sig;
+    } else {
+      resultado = gdclist_agregar-final(resultado, listaR->dato);
+      listaR = listaR->sig;
+    }
+  }
+  // Only one of the following loops will actually be entered.
+  while (!gdclist_es_vacia(listaL)) {
+    resultado = gdclist_agregar_leer(listaL, 0);
+    listaL = listaL->sig;
+  }
+  while (!gdclist_es_vacia(listaR)) {
+    resultado = gdclist_agregar_leer(listaR, 0);
+    listaL = listaR->sig;
+  }
+}
+
+/*
 GList mergeSort(GList lista, FuncionComparadora comparar) {
   if (!gdclist_es_vacia(lista)) {
     
   }
   return lista;
 }
-
+*/
 
 
 // MERGE SORT
-// function merge(left, right) is
-//     var result := empty list
-
-//     while left is not empty and right is not empty do
-//         if first(left) ≤ first(right) then
-//             append first(left) to result
-//             left := rest(left)
-//         else
-//             append first(right) to result
-//             right := rest(right)
-
-//     // Either left or right may have elements left; consume them.
-//     // (Only one of the following loops will actually be entered.)
-//     while left is not empty do
-//         append first(left) to result
-//         left := rest(left)
-//     while right is not empty do
-//         append first(right) to result
-//         right := rest(right)
-//     return result
-
 // function merge_sort(node head) is
 //     // return if empty list
 //     if head = nil then

@@ -19,14 +19,12 @@ static void imprimir_edad(void * dato) {
 
 
 GList leerPersonas(char *file) {
-  printf("Holaaa\n");
   FILE *fp_personas;
   fp_personas = fopen(file, "r"); // Abre el archivo pasado como parametro.
   GList listaPersonas = gdclist_crear();
   char edad[4];
   while (! feof(fp_personas)) {
     Persona *persona = malloc(sizeof(Persona));
-    // persona->nombre = "Manuel";
     persona->nombre = malloc(sizeof(char)*MAX_STR_SIZE);
     persona->lugarDeNacimiento = malloc(sizeof(char)*MAX_STR_SIZE);
     fscanf(fp_personas, "%[^,], %[^,], %[^\n]\n", persona->nombre, edad, persona->lugarDeNacimiento);
@@ -38,18 +36,19 @@ GList leerPersonas(char *file) {
 }
 
 
+
+
 int main(int argc, char **argv) {
-  assert(argc == 2);
+  assert(argc == 3);
 //   /* 
-//   argc == 2
+//   argc == 3
 //   argv[0] es el nombre del ejecutable
-//   argv[1] es el nombre del archivo de salida de programa1, es decir, el que contiene las personas
-//   Tambien puede recibir la cantidad de personas del otro programa para no tener que leer el archivo dos veces.
+//   argv[1] es el nombre del archivo de salida de programa1, es decir, el que contiene las personas (datos de prueba)
+//   argv[2] es el nombre del archivo donde se volcaran los resulados de la aplicacion de los algoritmos
 //   */
-  printf("wtf\n");
   GList listaPersonas = leerPersonas(argv[1]);
 
-  // gdclist_recorrer(listaPersonas, imprimir_persona, DLIST_RECORRIDO_HACIA_ADELANTE);
+  // gdclist_recorrer(listaPersonas, imprimir_persona);
   puts("Edades BEFORE SORT");
   gdclist_recorrer(listaPersonas, imprimir_edad);
   puts("");
@@ -59,7 +58,7 @@ int main(int argc, char **argv) {
   puts("Edades AFTER SORT");
   gdclist_recorrer(listaPersonas, imprimir_edad);
   puts("");
-//   gdclist_destruir(listaPersonas);
+  gdclist_destruir(listaPersonas, destruir_persona);
 
   return 0;
 }
