@@ -2,7 +2,7 @@
 
 NOMBRES = nombres1.txt
 PAISES = paises.txt
-PERSONAS = salida.txt
+PERSONAS = personas.txt
 NUM = 1000 # numero de personas que se piden crear
 FINAL = resultado.txt # archivo con el resultado final de programa2
 LISTAS = gdclist.c
@@ -14,7 +14,7 @@ programa1 : programa1.c $(NOMBRES) $(PAISES)
 
 # ejecuta programa1 con los correspondientes argumentos del main
 $(PERSONAS) : programa1 $(NOMBRES) $(PAISES)
-	./programa1 $(NOMBRES) $(PAISES) $@ $(NUM)
+	programa1 $(NOMBRES) $(PAISES) $@ $(NUM)
 
 # archivo objeto de la implementacion de listas generales
 gdclist.o : gdclist.c gdclist.h
@@ -29,8 +29,8 @@ programa2 : programa2.c $(PERSONAS) gdclist.o algoritmos.o
 	gcc -Wall -Werror -Wextra -o $@ programa2.c gdclist.o algoritmos.o 
 	
 # ejecuta programa2 con los correspondientes argumnetos del main
-$(FINAL) : programa2 $(PERSONAS)
-	./programa2 $(PERSONAS) $@
+# $(FINAL) : programa2 $(PERSONAS)
+# 	./programa2 $(PERSONAS) $@
 
 clean: 
 	rm *.o
