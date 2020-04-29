@@ -92,13 +92,13 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
     GNodo *nodoMinimo = lista, *nodoAComparar, *nodoActual = lista;
     int longitud = gdclist_longitud(lista), indiceMinimo;
     for (int i = 0; i < longitud - 1; i++) {
-      indiceMinimo = i;
+      // indiceMinimo = i;
       nodoMinimo = nodoActual;
       nodoAComparar = nodoActual->sig;
-      for (int j = i + 1; (j < longitud); j++) {
+      for (int j = i + 1; j < longitud; j++) {
         if (comparar(nodoAComparar->dato, nodoMinimo->dato) < 0) {
           nodoMinimo = nodoAComparar;
-          indiceMinimo = j;
+          // indiceMinimo = j;
         }
         nodoAComparar = nodoAComparar->sig;
       }
