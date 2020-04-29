@@ -103,7 +103,7 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
         nodoAComparar = nodoAComparar->sig;
       }
       if (nodoActual != nodoMinimo)
-        lista = gdclist_intercambiar(lista, i, indiceMinimo);
+        lista = gdclist_intercambiar(lista, nodoActual, nodoMinimo);
       nodoActual = nodoActual->sig;
     }
   }
@@ -124,7 +124,7 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
       while (j >= 0) {
         if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
           // printf("Se intercambian posiciones %d y %d\n", j, aux);
-          lista = gdclist_intercambiar(lista, j, aux);
+          lista = gdclist_intercambiar(lista, nodoActual, nodoAComparar);
           aux--;
           j--;
           nodoActual = nodoActual->ant;

@@ -45,7 +45,7 @@ GList gdclist_insertar(GList lista, void* dato, int pos);
 GList gdclist_eliminar(GList lista, int pos);
 
 // Dada una lista no vacía y dos posiciones, intercambia los nodos en posicion1 y posicion2 entre si.
-GList gdclist_intercambiar(GList lista, int posicion1, int posicion2);
+GList gdclist_intercambiar(GList lista, GNodo* nodo1, GNodo* nodo2);
 
 void gdclist_recorrer(GList lista, FuncionVisitante visit);
 

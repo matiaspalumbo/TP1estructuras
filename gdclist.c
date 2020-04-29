@@ -203,27 +203,26 @@ GList gdclist_eliminar(GList lista, int pos) {
 
 
 
-GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
+GList gdclist_intercambiar(GList lista, GNodo* nodo1, GNodo* nodo2) {
   assert(!gdclist_es_vacia(lista));
-  assert(posicion1 >= 0 && posicion1 < gdclist_longitud(lista));
-  assert(posicion2 >= 0 && posicion2 < gdclist_longitud(lista));
-
-  GNodo *nodoA, *nodoB;
-  if (posicion1 != posicion2) {
-    int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
-    int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
-    GNodo *temp = lista;
-    for (int i = 0; i < mayor+1; i++) {
-      if (i == menor) nodoA = temp;
-      if (i == mayor) nodoB = temp;
-      temp = temp->sig;
-    } /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
-    void* datoTemp = nodoA->dato;
-    nodoA->dato = nodoB->dato;
-    nodoB->dato = datoTemp;
-  }
-    // if (menor == 0) lista = nodoB;
-    return lista;
+  // assert(posicion1 >= 0 && posicion1 < gdclist_longitud(lista));
+  // assert(posicion2 >= 0 && posicion2 < gdclist_longitud(lista));
+  void* aux = nodo1->dato;
+  nodo1->dato = nodo2->dato;
+  nodo2->dato = aux;
+  return lista;
+  // GNodo* nodoMenor, *nodoMayor, *temp = lista;
+  // int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
+  // int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
+  // for (int i = 0; i <= mayor; i++) {
+  //   if (i == menor) nodoMenor = temp;
+  //   if (i == menor) nodoMayor = temp;
+  //   temp = temp->sig;
+  // }
+  // aux = nodoMenor->dato;
+  // nodoMenor->dato = nodoMayor->dato;
+  // nodoMayor->dato = aux;
+  // return lista;
 }
 
 void gdclist_recorrer(GList lista, FuncionVisitante visit) {
