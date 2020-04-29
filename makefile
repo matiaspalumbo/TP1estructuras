@@ -1,36 +1,27 @@
 # Makefile para el Trabajo Practico I de Estructuras de Datos y Algoritmos I
 
-NOMBRES = nombres1.txt
-PAISES = paises.txt
-PERSONAS = personas.txt
-NUM = 1000 # numero de personas que se piden crear
-FINAL = resultado.txt # archivo con el resultado final de programa2
 LISTAS = gdclist.c
+ALGORITMOS = algoritmos.c
+PROG1 = programa1
+PROG2 = programa2
 
+all : $(PROG1) $(PROG2)
 
 # ejecutable de programa 1
-programa1 : programa1.c $(NOMBRES) $(PAISES)
-	gcc -Wall -Werror -Wextra -o $@ programa1.c
-
-# ejecuta programa1 con los correspondientes argumentos del main
-$(PERSONAS) : programa1 $(NOMBRES) $(PAISES)
-	programa1 $(NOMBRES) $(PAISES) $@ $(NUM)
+$(PROG1) : $(PROG1).c
+	$(CC) $(CFLAGS) -o $@ $^
 
 # archivo objeto de la implementacion de listas generales
-gdclist.o : gdclist.c gdclist.h
-	gcc -c gdclist.c
+$(LISTAS:.c=.o) : $(LISTAS) $(LISTAS.c=.h)
+	$(CC) -c $(LISTAS)
 
 # archivo objeto de la implementacion de los algoritmos de ordenación
-algoritmos.o : algoritmos.c algoritmos.h gdclist.h
-	gcc -c algoritmos.c
+$(ALGORITMOS:.c=.o) : $(ALGORITMOS) $(ALGORITMOS:.c=.h) $(LISTAS:.c=.h)
+	$(CC) -c $(ALGORITMOS)
 
 # ejecutable de programa2
-programa2 : programa2.c $(PERSONAS) gdclist.o algoritmos.o
-	gcc -Wall -Werror -Wextra -o $@ programa2.c gdclist.o algoritmos.o 
-	
-# ejecuta programa2 con los correspondientes argumnetos del main
-# $(FINAL) : programa2 $(PERSONAS)
-# 	./programa2 $(PERSONAS) $@
+$(PROG2) : $(PROG2).c $(LISTAS:.c=.o) $(ALGORITMOS:.c=.o)
+	$(CC) $(CFLAGS) -o $@ $^ 
 
 clean: 
 	rm *.o
