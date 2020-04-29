@@ -140,12 +140,11 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
 
 
 
-GList merge(GList listaL, GList listaR, FuncionComparadora comparar) { // ESTA FUNCIÓN NO LA TOQUÉ
+GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
   listaL->ant->sig = NULL;
   listaR->ant->sig = NULL;
   GList resultado = NULL;
 
-  // while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
   while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
     if (comparar(gdclist_leer(listaL, 0), gdclist_leer(listaR, 0)) <= 0) {
       resultado = gdclist_agregar_final(resultado, listaL->dato);
@@ -173,45 +172,98 @@ GList mergeSort(GList lista, FuncionComparadora comparar) { // Ordena hasta la p
   if (gdclist_longitud(lista) == 1 || gdclist_es_vacia(lista))
     listaOrdenada = lista;
   else {
+    GList izqOrdenado = gdclist_crear();
+    GList derOrdenado = gdclist_crear();
     int mitad = (ceil(((double) gdclist_longitud(lista)) / 2.0));
     GNodo* temp = lista;
-    for (int i = 0; i < mitad; i++) {
+    for (int i = 0; i < gdclist_longitud(lista); i++) {
+      if (i < mitad)
+        izqOrdenado = gdclist_agregar_final(izqOrdenado, temp->dato);
+      else
+        derOrdenado = gdclist_agregar_final(derOrdenado, temp->dato);
       temp = temp->sig;
     }
-    GList izqOrdenado = lista;
-    GList derOrdenado = temp->sig;
-    derOrdenado->ant->sig = NULL;
-    izqOrdenado->ant->sig = NULL;
-    izqOrdenado->ant = NULL;
-    derOrdenado->ant = NULL;
-  // help un quilombo
-    // if (gdclist_longitud(lista) == 2) {
-    //   izqOrdenado = lista;
-    //   izqOrdenado->sig = izqOrdenado;
-    //   izqOrdenado->ant = izqOrdenado;
-    //   derOrdenado = lista->sig;
-    //   derOrdenado->sig = derOrdenado;
-    //   derOrdenado->ant = derOrdenado;
-    // } else {
-    //   izqOrdenado = lista;
-    //   derOrdenado = temp->sig;
-    //   GNodo* aux = lista->ant;
-    //   izqOrdenado->ant = temp;
-    //   temp->sig = izqOrdenado;
-    //   derOrdenado->ant = aux;
-    //   aux->sig = derOrdenado;
-    // }
-
-    // for (int i = 0; i < gdclist_longitud(lista); i++) {
-    //   if (i < mitad)
-    //     izqOrdenado = gdclist_agregar_final(izqOrdenado, temp->dato);
-    //   else
-    //     derOrdenado = gdclist_agregar_final(derOrdenado, temp->dato);
-    //   temp = temp->sig;
-    // }
     izqOrdenado = mergeSort(izqOrdenado, comparar);
     derOrdenado = mergeSort(derOrdenado, comparar);
     listaOrdenada = merge(izqOrdenado, derOrdenado, comparar);
     }
   return listaOrdenada;
 }
+
+
+// an attempt at trying to fix mergeSort
+// GList merge(GList listaL, GList listaR, FuncionComparadora comparar) { // ESTA FUNCIÓN NO LA TOQUÉ
+//   listaL->ant->sig = NULL;
+//   listaR->ant->sig = NULL;
+//   GList resultado = NULL;
+
+//   // while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
+//   while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
+//     if (comparar(gdclist_leer(listaL, 0), gdclist_leer(listaR, 0)) <= 0) {
+//       resultado = gdclist_agregar_final(resultado, listaL->dato);
+//       listaL = listaL->sig;
+//     } else {
+//       resultado = gdclist_agregar_final(resultado, listaR->dato);
+//       listaR = listaR->sig;
+//     }
+//   }
+//   // Only one of the following loops will actually be entered.
+//   while (!gdclist_es_vacia(listaL)) {
+//     resultado = gdclist_agregar_final(resultado, listaL->dato);
+//     listaL = listaL->sig;
+//   }
+//   while (!gdclist_es_vacia(listaR)) {
+//     resultado = gdclist_agregar_final(resultado, listaR->dato);
+//     listaR = listaR->sig;
+//   }
+//   return resultado;
+// }
+
+
+// GList mergeSort(GList lista, FuncionComparadora comparar) { // Ordena hasta la posicion limite inclusive
+//   GList listaOrdenada;
+//   if (gdclist_longitud(lista) == 1 || gdclist_es_vacia(lista))
+//     listaOrdenada = lista;
+//   else {
+//     int mitad = (ceil(((double) gdclist_longitud(lista)) / 2.0));
+//     GNodo* temp = lista;
+//     for (int i = 0; i < mitad; i++) {
+//       temp = temp->sig;
+//     }
+//     GList izqOrdenado = lista;
+//     GList derOrdenado = temp->sig;
+//     derOrdenado->ant->sig = NULL;
+//     izqOrdenado->ant->sig = NULL;
+//     izqOrdenado->ant = NULL;
+//     derOrdenado->ant = NULL;
+//   // help un quilombo
+//     // if (gdclist_longitud(lista) == 2) {
+//     //   izqOrdenado = lista;
+//     //   izqOrdenado->sig = izqOrdenado;
+//     //   izqOrdenado->ant = izqOrdenado;
+//     //   derOrdenado = lista->sig;
+//     //   derOrdenado->sig = derOrdenado;
+//     //   derOrdenado->ant = derOrdenado;
+//     // } else {
+//     //   izqOrdenado = lista;
+//     //   derOrdenado = temp->sig;
+//     //   GNodo* aux = lista->ant;
+//     //   izqOrdenado->ant = temp;
+//     //   temp->sig = izqOrdenado;
+//     //   derOrdenado->ant = aux;
+//     //   aux->sig = derOrdenado;
+//     // }
+
+//     // for (int i = 0; i < gdclist_longitud(lista); i++) {
+//     //   if (i < mitad)
+//     //     izqOrdenado = gdclist_agregar_final(izqOrdenado, temp->dato);
+//     //   else
+//     //     derOrdenado = gdclist_agregar_final(derOrdenado, temp->dato);
+//     //   temp = temp->sig;
+//     // }
+//     izqOrdenado = mergeSort(izqOrdenado, comparar);
+//     derOrdenado = mergeSort(derOrdenado, comparar);
+//     listaOrdenada = merge(izqOrdenado, derOrdenado, comparar);
+//     }
+//   return listaOrdenada;
+// }
