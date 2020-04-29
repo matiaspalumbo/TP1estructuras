@@ -120,8 +120,8 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
       j = aux-1;
       ultimoOrdenado = nodoActual;
       nodoAComparar = nodoActual->sig;
-      while (0 <= j) {
-        if (0 < comparar(nodoActual->dato, nodoAComparar->dato)) {
+      while (j >= 0) {
+        if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
           lista = gdclist_intercambiar(lista, j, aux);
           aux--;
           j--;
