@@ -11,12 +11,12 @@ typedef struct {
   char *lugarDeNacimiento; //pais o capital
 } Persona;
 
-/*
-retorna un entero menor que, igual a, o mayor que 0 , si el primer argumento es considerado,
-respectivamente, menor que, igual a o mayor que el segundo
-*/
+
 // Definición del tipo de la función comparadora de dos elementos de una lista.
 typedef int (*FuncionComparadora) (void *dato1, void *dato2);
+
+// Definición del tipo de una función que ordena una lista.
+typedef GList (*AlgoritmoSorting) (GList lista, FuncionComparadora comparar);
 
 void destruir_persona(void *dato);
 
