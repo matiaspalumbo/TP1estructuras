@@ -72,18 +72,18 @@ int main(int argc, char **argv) {
   // gdclist_recorrer(listaPersonas, imprimir_persona);
   // puts("Edades BEFORE SORT");
 // 
-  gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
+  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
   // printf("lo tira antes de la función\n");
 
   // Persona *persona = malloc(sizeof(Persona));
   // persona->edad = -42;
   // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
-  listaPersonas = insertionSort(listaPersonas, compEdades);
+  // listaPersonas = insertionSort(listaPersonas, compEdades);
   // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 0);
   // listaPersonas = gdclist_insertar(listaPersonas, (void*) persona, 10);
 
   // puts("Edades AFTER SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
+  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
   // printf("lo tira después de la función\n");
 
 
