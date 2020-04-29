@@ -72,7 +72,7 @@ GList gdclist_agregar_final(GList lista, void *dato) {
   return lista;
 }
 
-void *gdclist_leer(GList lista, int pos) {
+void* gdclist_leer(GList lista, int pos) {
   assert(pos >= 0);
   // assert(pos < gdclist_longitud(lista));
   GNodo *temp = lista;
@@ -80,6 +80,74 @@ void *gdclist_leer(GList lista, int pos) {
     temp = temp->sig;
   return temp->dato;
 }
+
+GList gdclist_insertar(GList lista, void* dato, int pos) {
+  assert(pos <= gdclist_longitud(lista) && pos >= 0);
+  GNodo* nuevoNodo = malloc(sizeof(GNodo));
+  GNodo* aux;
+  nuevoNodo->dato = dato;
+  if (pos == 0) {
+    nuevoNodo->sig = lista;
+    nuevoNodo->ant = (lista)->ant;
+    aux = (lista)->ant;
+    (lista)->ant = nuevoNodo;
+    aux->sig = nuevoNodo;
+    lista = nuevoNodo;
+  } else {
+    GNodo* temp = lista;
+    for (int i=0; i!=pos-1; i++) {
+      temp = temp->sig;
+    }
+    nuevoNodo->sig = temp->sig;
+    nuevoNodo->ant = temp;
+    aux = temp->sig;
+    temp->sig = nuevoNodo;
+    aux->ant = nuevoNodo;
+  }
+  return lista;
+}
+
+GList gdclist_eliminar(GList lista, int pos) {
+  int longitud = gdclist_longitud(lista);
+  assert(pos < longitud && pos >= 0);
+  // GNodo* resultado = lista;
+  if (pos == 0) {
+    if (longitud == 1)
+      lista = NULL;
+    (lista)->sig->ant = (lista)->ant;
+    (lista)->ant->sig = (lista)->sig;
+    free(lista);
+    lista = lista->sig;
+  } else {
+    GNodo* temp = lista;
+    for (int i=0; i!=pos-1; i++) {
+      temp = temp->sig;
+    }
+    GNodo* aux = temp->sig;
+    temp->sig = aux->sig;
+    aux->sig->ant = temp;
+    free(aux);
+  }
+  return lista;
+}
+
+// GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
+//   assert(!gdclist_es_vacia(lista));
+//   assert(posicion1 >= 0 && posicion1 < gdclist_longitud(lista));
+//   assert(posicion2 >= 0 && posicion2 < gdclist_longitud(lista));
+//   if (posicion1 != posicion2) {
+//     // int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
+//     // int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
+//     void* dato1 = gdclist_leer(lista, posicion1);
+//     void* dato2 = gdclist_leer(lista, posicion2);
+//     lista = gdclist_insertar(lista, dato2, posicion1);
+//     lista = gdclist_eliminar(lista, posicion1+1);
+//     lista = gdclist_insertar(lista, dato1, posicion2);
+//     lista = gdclist_eliminar(lista, posicion2+1);
+//   }
+//   return lista;
+// }
+
 
 // GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
 //   assert(!gdclist_es_vacia(lista));
@@ -127,12 +195,13 @@ void *gdclist_leer(GList lista, int pos) {
 //         auxAant->sig = nodoB;
 //       }
 //     }
-
 //     if (menor == 0) lista = nodoB;
 //   }
-
 //   return lista;
 // }
+
+
+
 
 GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
   assert(!gdclist_es_vacia(lista));

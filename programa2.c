@@ -8,10 +8,11 @@
 # include "algoritmos.h"
 
 #define MAX_STR_SIZE 70
+#define POSITION 0
 
-static void imprimir_persona(void * dato) {
-  printf("%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
-}
+// static void imprimir_persona(void * dato) {
+//   printf("%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
+// }
 
 GList leerPersonas(char *file) {
   FILE *fp_personas;
@@ -31,6 +32,24 @@ GList leerPersonas(char *file) {
 }
 
 void correrAlgoritmo(char* archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
+  FILE* archivoPtr = fopen(archivo, "w");
+  int longitud = gdclist_longitud(lista);
+  char algoritmo[MAX_STR_SIZE], funcComp[MAX_STR_SIZE], junk[MAX_STR_SIZE];
+  clock_t inicioSort, finalSort;
+  inicioSort = clock();
+  lista = ordenar(lista, comparar);
+  finalSort = clock();
+  double tiempoEjecucion = (double)(finalSort - inicioSort) / CLOCKS_PER_SEC;
+  sscanf(archivo, "%[^_]_%[^_]_%[^_]_%[^.].txt", algoritmo, junk, junk, funcComp);
+  fprintf(archivoPtr, "%s Sort ordenando %s (de manera ascendente)\nTiempo de ejecución: %fs\n\nLista ordenada:\n", algoritmo, funcComp, tiempoEjecucion);
+  GNodo* temp = lista;
+  Persona* persona;
+  for (int i = 0; i < longitud; i++) {
+    persona = (Persona*) temp->dato;
+    fprintf(archivoPtr, "%s, %d, %s\n", persona->nombre, persona->edad, persona->lugarDeNacimiento);
+    temp = temp->sig;
+  }
+  fclose(archivoPtr);
 }
 
 
@@ -44,22 +63,32 @@ int main(int argc, char **argv) {
 //   */
   GList listaPersonas = leerPersonas(argv[1]);
 
-
-
+  // correrAlgoritmo("Selection_Sort_comp_edades.txt", listaPersonas, selectionSort, compEdades);
+  // correrAlgoritmo("Selection_Sort_comp_nombres.txt", listaPersonas, selectionSort, compNombres);
+  // correrAlgoritmo("Insertion_Sort_comp_edades.txt", listaPersonas, insertionSort, compEdades);
+  // correrAlgoritmo("Insertion_Sort_comp_nombres.txt", listaPersonas, insertionSort, compNombres);
+  // correrAlgoritmo("Merge_Sort_comp_edades.txt", listaPersonas, mergeSort, compEdades);
+  // correrAlgoritmo("Merge_Sort_comp_nombres.txt", listaPersonas, mergeSort, compNombres);
   // gdclist_recorrer(listaPersonas, imprimir_persona);
-  puts("Edades BEFORE SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad);
-  puts("");
+  // puts("Edades BEFORE SORT");
+// 
+  gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
   // printf("lo tira antes de la función\n");
 
-  listaPersonas = mergeSort(listaPersonas, compEdades);
+  // Persona *persona = malloc(sizeof(Persona));
+  // persona->edad = -42;
+  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
+  listaPersonas = insertionSort(listaPersonas, compEdades);
+  // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 0);
+  // listaPersonas = gdclist_insertar(listaPersonas, (void*) persona, 10);
 
-  // // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 49);
-
-  puts("Edades AFTER SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad);
-  puts("");
+  // puts("Edades AFTER SORT");
+  gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
   // printf("lo tira después de la función\n");
+
+
+
+  
   gdclist_destruir(listaPersonas, destruir_persona);
   // printf("lo tira después de destruir la lista\n");
 

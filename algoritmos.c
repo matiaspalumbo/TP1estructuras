@@ -120,10 +120,10 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
       j = aux-1;
       ultimoOrdenado = nodoActual;
       nodoAComparar = nodoActual->sig;
-      printf("Posición pivot: %d\n", i);
+      // printf("Posición pivot: %d\n", i);
       while (j >= 0) {
         if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
-          printf("Se intercambian posiciones %d y %d\n", j, aux);
+          // printf("Se intercambian posiciones %d y %d\n", j, aux);
           lista = gdclist_intercambiar(lista, j, aux);
           aux--;
           j--;
@@ -137,6 +137,40 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
   return lista;
 }
 
+
+// GList insertionSort(GList lista, FuncionComparadora comparar) { 
+//   if (!gdclist_es_vacia(lista)) {
+//     GNodo *nodoActual = lista, *nodoAComparar, *ultimoOrdenado;
+//     int aux, j, longitud = gdclist_longitud(lista);
+//     for (int i = 1; i < longitud; i++) {
+//       aux = i;
+//       j = aux-1;
+//       ultimoOrdenado = nodoActual;
+//       nodoAComparar = nodoActual->sig;
+//       // printf("Posición pivot: %d\n", i);
+//       while (j >= 0) {
+//         if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
+//           // printf("Se intercambian posiciones %d y %d\n", j, aux);
+//           if (j == 0) {
+//             lista = gdclist_insertar(lista, nodoAComparar->dato, j);
+//             lista = gdclist_eliminar(lista, aux+1);
+//           } else {
+//             // aux--;
+//             j--;
+//             nodoActual = nodoActual->ant;
+//           }
+//           // nodoAComparar = nodoAComparar->ant;
+//         } else {
+//           lista = gdclist_insertar(lista, nodoAComparar->dato, j+1);
+//           lista = gdclist_eliminar(lista, aux+1);
+//           j = -1;
+//         }
+//       }
+//       nodoActual = ultimoOrdenado->sig;
+//     }
+//   }
+//   return lista;
+// }
 
 
 
