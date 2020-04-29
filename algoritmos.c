@@ -39,6 +39,7 @@ int compNombres(void *persona1, void *persona2) {
     else if (s1[i] > s2[i]) val = 1;
     else val = 0;
   }
+  if (val == 0) val = compEdades(persona1, persona2);
   return val;
 }
 

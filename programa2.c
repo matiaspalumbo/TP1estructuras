@@ -34,7 +34,7 @@ GList leerPersonas(char *file) {
 
 GList copiarLista(GList lista) {
   int longitud = gdclist_longitud(lista);
-  GList nuevaLista = NULL;
+  GList nuevaLista = gdclist_crear();
   for (int i = 0; i < longitud; i++) {
     nuevaLista = gdclist_agregar_final(nuevaLista, lista->dato);
     lista = lista->sig;
