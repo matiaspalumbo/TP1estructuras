@@ -41,33 +41,6 @@ int compNombres(void *persona1, void *persona2) {
   return val;
 }
 
-// UNA OPCION DE SELECTION SORT (INC.)
-// GList selectionSort(GList lista, FuncionComparadora comparar) {
-//   if (!gdclist_es_vacia(lista)) {
-//     int longitud = gdclist_longitud(lista);
-//     int i = 0, j;
-//     int primerElemento = lista;
-//     for (GNodo* temp1 = lista; temp1->sig != primerElemento; temp1 = temp1->sig) {
-//       void* minimo = i;
-//       j = i + 1;
-//       for (GNodo* temp2 = temp1->sig; temp2->sig != primerElemento; temp2 = temp2->sig) {
-//         if (comparar(temp2->dato, temp1->dato) < 0)
-//           minimo = j;
-//         j++;
-//       }
-//       if (minimo != i) {
-//         gdclist_intercambiar(lista, i, minimo);
-//         primerElemento = 
-//       }
-//       i++;
-//     }
-//   }
-//   return lista;
-// }
-
-// the best (i think) shot at selection sort
-
-
 // GList selectionSort(GList lista, FuncionComparadora comparar) {
 //   if (!gdclist_es_vacia(lista)) {
 //     int indiceMinimo, longitud = gdclist_longitud(lista);
@@ -92,13 +65,11 @@ GList selectionSort(GList lista, FuncionComparadora comparar) {
     GNodo *nodoMinimo = lista, *nodoAComparar, *nodoActual = lista;
     int longitud = gdclist_longitud(lista), indiceMinimo;
     for (int i = 0; i < longitud - 1; i++) {
-      // indiceMinimo = i;
       nodoMinimo = nodoActual;
       nodoAComparar = nodoActual->sig;
       for (int j = i + 1; j < longitud; j++) {
         if (comparar(nodoAComparar->dato, nodoMinimo->dato) < 0) {
           nodoMinimo = nodoAComparar;
-          // indiceMinimo = j;
         }
         nodoAComparar = nodoAComparar->sig;
       }
@@ -136,42 +107,6 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
   }
   return lista;
 }
-
-
-// GList insertionSort(GList lista, FuncionComparadora comparar) { 
-//   if (!gdclist_es_vacia(lista)) {
-//     GNodo *nodoActual = lista, *nodoAComparar, *ultimoOrdenado;
-//     int aux, j, longitud = gdclist_longitud(lista);
-//     for (int i = 1; i < longitud; i++) {
-//       aux = i;
-//       j = aux-1;
-//       ultimoOrdenado = nodoActual;
-//       nodoAComparar = nodoActual->sig;
-//       // printf("Posición pivot: %d\n", i);
-//       while (j >= 0) {
-//         if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
-//           // printf("Se intercambian posiciones %d y %d\n", j, aux);
-//           if (j == 0) {
-//             lista = gdclist_insertar(lista, nodoAComparar->dato, j);
-//             lista = gdclist_eliminar(lista, aux+1);
-//           } else {
-//             // aux--;
-//             j--;
-//             nodoActual = nodoActual->ant;
-//           }
-//           // nodoAComparar = nodoAComparar->ant;
-//         } else {
-//           lista = gdclist_insertar(lista, nodoAComparar->dato, j+1);
-//           lista = gdclist_eliminar(lista, aux+1);
-//           j = -1;
-//         }
-//       }
-//       nodoActual = ultimoOrdenado->sig;
-//     }
-//   }
-//   return lista;
-// }
-
 
 
 GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
