@@ -81,55 +81,55 @@ void* gdclist_leer(GList lista, int pos) {
   return temp->dato;
 }
 
-GList gdclist_insertar(GList lista, void* dato, int pos) {
-  assert(pos <= gdclist_longitud(lista) && pos >= 0);
-  GNodo* nuevoNodo = malloc(sizeof(GNodo));
-  GNodo* aux;
-  nuevoNodo->dato = dato;
-  if (pos == 0) {
-    nuevoNodo->sig = lista;
-    nuevoNodo->ant = (lista)->ant;
-    aux = (lista)->ant;
-    (lista)->ant = nuevoNodo;
-    aux->sig = nuevoNodo;
-    lista = nuevoNodo;
-  } else {
-    GNodo* temp = lista;
-    for (int i=0; i!=pos-1; i++) {
-      temp = temp->sig;
-    }
-    nuevoNodo->sig = temp->sig;
-    nuevoNodo->ant = temp;
-    aux = temp->sig;
-    temp->sig = nuevoNodo;
-    aux->ant = nuevoNodo;
-  }
-  return lista;
-}
+// GList gdclist_insertar(GList lista, void* dato, int pos) {
+//   assert(pos <= gdclist_longitud(lista) && pos >= 0);
+//   GNodo* nuevoNodo = malloc(sizeof(GNodo));
+//   GNodo* aux;
+//   nuevoNodo->dato = dato;
+//   if (pos == 0) {
+//     nuevoNodo->sig = lista;
+//     nuevoNodo->ant = (lista)->ant;
+//     aux = (lista)->ant;
+//     (lista)->ant = nuevoNodo;
+//     aux->sig = nuevoNodo;
+//     lista = nuevoNodo;
+//   } else {
+//     GNodo* temp = lista;
+//     for (int i=0; i!=pos-1; i++) {
+//       temp = temp->sig;
+//     }
+//     nuevoNodo->sig = temp->sig;
+//     nuevoNodo->ant = temp;
+//     aux = temp->sig;
+//     temp->sig = nuevoNodo;
+//     aux->ant = nuevoNodo;
+//   }
+//   return lista;
+// }
 
-GList gdclist_eliminar(GList lista, int pos) {
-  int longitud = gdclist_longitud(lista);
-  assert(pos < longitud && pos >= 0);
-  // GNodo* resultado = lista;
-  if (pos == 0) {
-    if (longitud == 1)
-      lista = NULL;
-    (lista)->sig->ant = (lista)->ant;
-    (lista)->ant->sig = (lista)->sig;
-    free(lista);
-    lista = lista->sig;
-  } else {
-    GNodo* temp = lista;
-    for (int i=0; i!=pos-1; i++) {
-      temp = temp->sig;
-    }
-    GNodo* aux = temp->sig;
-    temp->sig = aux->sig;
-    aux->sig->ant = temp;
-    free(aux);
-  }
-  return lista;
-}
+// GList gdclist_eliminar(GList lista, int pos) {
+//   int longitud = gdclist_longitud(lista);
+//   assert(pos < longitud && pos >= 0);
+//   // GNodo* resultado = lista;
+//   if (pos == 0) {
+//     if (longitud == 1)
+//       lista = NULL;
+//     (lista)->sig->ant = (lista)->ant;
+//     (lista)->ant->sig = (lista)->sig;
+//     free(lista);
+//     lista = lista->sig;
+//   } else {
+//     GNodo* temp = lista;
+//     for (int i=0; i!=pos-1; i++) {
+//       temp = temp->sig;
+//     }
+//     GNodo* aux = temp->sig;
+//     temp->sig = aux->sig;
+//     aux->sig->ant = temp;
+//     free(aux);
+//   }
+//   return lista;
+// }
 
 // GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
 //   assert(!gdclist_es_vacia(lista));
@@ -201,30 +201,14 @@ GList gdclist_eliminar(GList lista, int pos) {
 // }
 
 
-
-
-GList gdclist_intercambiar(GList lista, int posicion1, int posicion2) {
+GList gdclist_intercambiar(GList lista, GNodo* nodo1, GNodo* nodo2) {
   assert(!gdclist_es_vacia(lista));
-  assert(posicion1 >= 0 && posicion1 < gdclist_longitud(lista));
-  assert(posicion2 >= 0 && posicion2 < gdclist_longitud(lista));
-
-  GNodo *nodoA, *nodoB;
-  if (posicion1 != posicion2) {
-    int menor = (posicion1 <= posicion2) ? posicion1 : posicion2;
-    int mayor = (posicion1 <= posicion2) ? posicion2 : posicion1;
-    GNodo *temp = lista;
-    for (int i = 0; i < mayor+1; i++) {
-      if (i == menor) nodoA = temp;
-      if (i == mayor) nodoB = temp;
-      temp = temp->sig;
-    } /* ahora nodoA apunta al nodo en la menor posicion y nodoB al nodo en la posicion mayor */
-    void* datoTemp = nodoA->dato;
-    nodoA->dato = nodoB->dato;
-    nodoB->dato = datoTemp;
-  }
-    // if (menor == 0) lista = nodoB;
-    return lista;
+  void* aux = nodo1->dato;
+  nodo1->dato = nodo2->dato;
+  nodo2->dato = aux;
+  return lista;
 }
+
 
 void gdclist_recorrer(GList lista, FuncionVisitante visit) {
   GNodo * nodo = lista;

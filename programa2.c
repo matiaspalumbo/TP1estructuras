@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 //   */
   GList listaPersonas = leerPersonas(argv[1]);
 
-  // correrAlgoritmo("Selection_Sort_comp_edades.txt", listaPersonas, selectionSort, compEdades);
+  correrAlgoritmo("Selection_Sort_comp_edades.txt", listaPersonas, selectionSort, compEdades);
   // correrAlgoritmo("Selection_Sort_comp_nombres.txt", listaPersonas, selectionSort, compNombres);
   // correrAlgoritmo("Insertion_Sort_comp_edades.txt", listaPersonas, insertionSort, compEdades);
   // correrAlgoritmo("Insertion_Sort_comp_nombres.txt", listaPersonas, insertionSort, compNombres);
@@ -72,18 +72,18 @@ int main(int argc, char **argv) {
   // gdclist_recorrer(listaPersonas, imprimir_persona);
   // puts("Edades BEFORE SORT");
 // 
-  gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
+  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
   // printf("lo tira antes de la función\n");
 
   // Persona *persona = malloc(sizeof(Persona));
   // persona->edad = -42;
   // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
-  listaPersonas = insertionSort(listaPersonas, compEdades);
+  // listaPersonas = insertionSort(listaPersonas, compEdades);
   // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 0);
   // listaPersonas = gdclist_insertar(listaPersonas, (void*) persona, 10);
 
   // puts("Edades AFTER SORT");
-  gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
+  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
   // printf("lo tira después de la función\n");
 
 
