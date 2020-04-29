@@ -14,7 +14,7 @@ void gdclist_destruir(GList lista, Destruir funcion_destructora) {
   while (lista != NULL) {
     nodoAEliminar = lista;
     lista = lista->sig;
-    funcion_destructora(nodoAEliminar->dato);
+    if (funcion_destructora != NULL) funcion_destructora(nodoAEliminar->dato);
     free(nodoAEliminar);
   }
 }

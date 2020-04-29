@@ -31,6 +31,18 @@ GList leerPersonas(char *file) {
   return listaPersonas;
 }
 
+
+GList copiarLista(GList lista) {
+  int longitud = gdclist_longitud(lista);
+  GList nuevaLista = NULL;
+  for (int i = 0; i < longitud; i++) {
+    nuevaLista = gdclist_agregar_final(nuevaLista, lista->dato);
+    lista = lista->sig;
+  }
+  return nuevaLista;
+}
+
+
 void correrAlgoritmo(char* archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
   FILE* archivoPtr = fopen(archivo, "w");
   int longitud = gdclist_longitud(lista);
@@ -61,43 +73,31 @@ int main(int argc, char **argv) {
 //   argv[1] es el nombre del archivo de salida de programa1, es decir, el que contiene las personas (datos de prueba)
 //   argv[2] es el nombre del archivo donde se volcaran los resulados de la aplicacion de los algoritmos
 //   */
+
   GList listaPersonas = leerPersonas(argv[1]);
-
-  correrAlgoritmo("Selection_Sort_comp_edades.txt", listaPersonas, selectionSort, compEdades);
-  // correrAlgoritmo("Selection_Sort_comp_nombres.txt", listaPersonas, selectionSort, compNombres);
-  // correrAlgoritmo("Insertion_Sort_comp_edades.txt", listaPersonas, insertionSort, compEdades);
-  // correrAlgoritmo("Insertion_Sort_comp_nombres.txt", listaPersonas, insertionSort, compNombres);
-  // correrAlgoritmo("Merge_Sort_comp_edades.txt", listaPersonas, mergeSort, compEdades);
-  // correrAlgoritmo("Merge_Sort_comp_nombres.txt", listaPersonas, mergeSort, compNombres);
-  // gdclist_recorrer(listaPersonas, imprimir_persona);
-  // puts("Edades BEFORE SORT");
-// 
-  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
-  // printf("lo tira antes de la función\n");
-
-  // Persona *persona = malloc(sizeof(Persona));
-  // persona->edad = -42;
-  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
-  // listaPersonas = insertionSort(listaPersonas, compEdades);
-  // listaPersonas = gdclist_intercambiar(listaPersonas, 0, 0);
-  // listaPersonas = gdclist_insertar(listaPersonas, (void*) persona, 10);
-
-  // puts("Edades AFTER SORT");
-  // gdclist_recorrer(listaPersonas, imprimir_edad);   puts("");
-  // printf("lo tira después de la función\n");
-
-
-
   
+  GList copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Selection_Sort_comp_edades.txt", copia, selectionSort, compEdades);
+  gdclist_destruir(copia, NULL);
+  
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Selection_Sort_comp_nombres.txt", copia, selectionSort, compNombres);
+  gdclist_destruir(copia, NULL);
+
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Insertion_Sort_comp_edades.txt", copia, insertionSort, compEdades);
+  gdclist_destruir(copia, NULL);
+  
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Insertion_Sort_comp_nombres.txt", copia, insertionSort, compNombres);
+  gdclist_destruir(copia, NULL);
+  
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Merge_Sort_comp_edades.txt", copia, mergeSort, compEdades);
+  gdclist_destruir(copia, NULL);
+  
+  correrAlgoritmo("Merge_Sort_comp_nombres.txt", listaPersonas, mergeSort, compNombres);
   gdclist_destruir(listaPersonas, destruir_persona);
-  // printf("lo tira después de destruir la lista\n");
-
-
-
-
-
-
-
 
 
   return 0;

@@ -1,0 +1,14 @@
+Merge Sort ordenando nombres (de manera ascendente)
+Tiempo de ejecución: 0.000018s
+
+Lista ordenada:
+ALBERTO ANTONIO SOLIS, 73, Kuwait City
+ARNULFO CESPEDES, 77, Islas de Heard y McDonald
+EVELIO ARIAS, 70, Ámsterdam
+GILBERTO MATAMOROS, 4, Helsinki
+HERBERT CERVANTES, 31, Guayana Francesa
+LEONARDO RIVERA, 100, Reikiavik
+MARIA ELIZABETH ARROYO, 43, Saint John
+MIREYA GERARDINA CALDERON, 7, Nauru
+NIEVES SOLIS, 12, Micronesia
+SARAY CASTRO, 95, Naipyidó
