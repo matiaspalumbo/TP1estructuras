@@ -63,7 +63,6 @@ void escribirPersonas(char **nombres, char **paises, int nPersonas, int len_nomb
     persona->nombre = nombres[rand() % len_nombres];
     persona->edad = (rand() % 100) + 1;
     persona->lugarDeNacimiento = paises[rand() % len_paises];
-    // printf("%s, %d, %s\n", persona->nombre, persona->edad, persona->lugarDeNacimiento);
     fprintf(fp_salida, "%s, %d, %s\n", persona->nombre, persona->edad, persona->lugarDeNacimiento);
   }
   free(persona);

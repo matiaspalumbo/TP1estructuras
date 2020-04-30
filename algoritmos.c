@@ -6,7 +6,7 @@
 # include "algoritmos.h"
 
 
-void imprimir_edad(void * dato) {
+void imprimir_edad(void *dato) {
   // printf("nodo siguiente: %d\n", ((Persona*) dato)->edad);
   printf("%d  ", ((Persona*) dato)->edad);
 }
@@ -92,10 +92,8 @@ GList insertionSort(GList lista, FuncionComparadora comparar) {
       j = i - 1;
       ultimoOrdenado = nodoActual;
       nodoAComparar = nodoActual->sig;
-      // printf("Posición pivot: %d\n", i);
       while (j >= 0) {
         if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
-          // printf("Se intercambian posiciones %d y %d\n", j, aux);
           lista = gdclist_intercambiar(lista, nodoActual, nodoAComparar);
           j--;
           nodoActual = nodoActual->ant;
@@ -116,7 +114,7 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
   listaL->ant->sig = NULL;
   listaR->ant->sig = NULL;
   GList resultado;
-  GNodo* ultimo;
+  GNodo *ultimo;
   if (comparar(listaL->dato, listaR->dato) <= 0) {
     resultado = listaL;
     listaL = listaL->sig;
@@ -178,13 +176,13 @@ GList mergeSort(GList lista, FuncionComparadora comparar) {
     listaOrdenada = lista;
   else {
     GList izqOrdenado = lista;
-    GNodo* temp = lista;
+    GNodo *temp = lista;
     int mitad = ceil((double) gdclist_longitud(lista) / 2.0);
     for (int i = 0; i < mitad-1; i++) {
       temp = temp->sig;
     }
     GList derOrdenado = temp->sig; // guardo las posiciones a reemplazar en izqOrdenado para derOrdenado
-    GNodo* finalLista2 = izqOrdenado->ant;
+    GNodo *finalLista2 = izqOrdenado->ant;
     temp->sig = izqOrdenado;
     izqOrdenado->ant = temp;
     finalLista2->sig = derOrdenado;

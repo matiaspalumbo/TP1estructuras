@@ -43,8 +43,8 @@ GList copiarLista(GList lista) {
 }
 
 
-void correrAlgoritmo(char* archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
-  FILE* archivoPtr = fopen(archivo, "w");
+void correrAlgoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
+  FILE *archivoPtr = fopen(archivo, "w");
   int longitud = gdclist_longitud(lista);
   char algoritmo[MAX_STR_SIZE], funcComp[MAX_STR_SIZE], junk[MAX_STR_SIZE], orden[MAX_STR_SIZE];
   clock_t inicioSort, finalSort;
@@ -66,7 +66,7 @@ void correrAlgoritmo(char* archivo, GList lista, AlgoritmoSorting ordenar, Funci
 
 
 int main(int argc, char **argv) {
-  // assert(argc == 2);
+  assert(argc == 2);
 //   /* 
 //   argc == 3
 //   argv[0] es el nombre del ejecutable
