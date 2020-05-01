@@ -1,9 +1,10 @@
 # Makefile para el Trabajo Practico I de Estructuras de Datos y Algoritmos I
 
-LISTAS = gdclist.c
-ALGORITMOS = algoritmos.c
 PROG1 = programa1
 PROG2 = programa2
+LISTAS = gdclist.c
+ALGORITMOS = algoritmos.c
+
 
 all : $(PROG1) $(PROG2)
 
@@ -21,7 +22,7 @@ $(ALGORITMOS:.c=.o) : $(ALGORITMOS) $(ALGORITMOS:.c=.h) $(LISTAS:.c=.h)
 
 # ejecutable de programa2
 $(PROG2) : $(PROG2).c $(LISTAS:.c=.o) $(ALGORITMOS:.c=.o)
-	$(CC) $(CFLAGS) -o $@ $^ 
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean: 
 	rm *.o
