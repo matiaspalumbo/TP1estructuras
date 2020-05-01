@@ -2,6 +2,7 @@
 #define __ALGORITMOS_H__
 
 #include <stddef.h>
+#include <wchar.h>
 #include "gdclist.h"
 
 /* Archivo de cabecera de la implementación de los algoritmos de ordenación 
@@ -10,9 +11,9 @@ enlazadas circulares y algunas funciones auxiliares. */
 
 
 typedef struct { // Estructura de una Persona.
-  char *nombre;
+  wchar_t *nombre;
   int edad;
-  char *lugarDeNacimiento; //(pais o ciudad)
+  wchar_t *lugarDeNacimiento; //(pais o ciudad)
 } Persona;
 
 

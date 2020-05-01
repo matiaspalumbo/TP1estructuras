@@ -2,6 +2,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <wchar.h>
 # include "gdclist.h"
 # include "algoritmos.h"
 
@@ -30,17 +31,20 @@ int compEdades(void *persona1, void *persona2) {
 }
 
 // Compara dos arreglos de char 
+// Ñ - 209
 int compNombres(void *persona1, void *persona2) {
-  char *s1 = ((Persona*)persona1)->nombre, *s2 = ((Persona*)persona2)->nombre;
-  int val = 0;
-  int len = (strlen(s1) < strlen(s2)) ? strlen(s1) : strlen(s2);
-  for (int i = 0; (i < len) && (val == 0); i++) {
-    if (s1[i] < s2[i]) val = -1;
-    else if (s1[i] > s2[i]) val = 1;
-    else val = 0;
-  }
-  if (val == 0) val = compEdades(persona1, persona2);
-  return val;
+  wchar_t *s1 = ((Persona*)persona1)->nombre, *s2 = ((Persona*)persona2)->nombre;
+  // int val = 0;
+  // int len = (strlen(s1) < strlen(s2)) ? strlen(s1) : strlen(s2);
+  // for (int i = 0; i < len; i++) printf("%d - %d\n", s1[i], s2[i]);
+  // for (int i = 0; (i < len) && (val == 0); i++) {
+  //   if (s1[i] < s2[i]) val = -1;
+  //   else if (s1[i] > s2[i]) val = 1;
+  //   else val = 0;
+  // }
+  // if (val == 0) val = compEdades(persona1, persona2);
+  // return val;
+  return wcscmp(s1, s2);
 }
 
 GList selectionSort(GList lista, FuncionComparadora comparar) {
