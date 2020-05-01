@@ -179,7 +179,8 @@ GList mergeSort(GList lista, FuncionComparadora comparar) {
   else {
     GList izqOrdenado = lista;
     GNodo* temp = lista;
-    int mitad = ceil((double) gdclist_longitud(lista) / 2.0);
+    int mitad = (longitud % 2 == 0) ? (longitud / 2) : (longitud / 2 + 1);
+    // int mitad = ceil((double) gdclist_longitud(lista) / 2.0);
     for (int i = 0; i < mitad-1; i++) {
       temp = temp->sig;
     }
