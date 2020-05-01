@@ -1,18 +1,16 @@
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <math.h>
 # include <time.h>
 # include <assert.h>
-# include <locale.h>
 
 #define MAX_STR_SIZE 70
+#define MAX_EDAD 100
 
-
-typedef struct {
+typedef struct { 
   char *nombre;
   int edad;
-  char *lugarDeNacimiento; //pais o capital
+  char *lugarDeNacimiento;
 } Persona;
 
 
@@ -53,19 +51,29 @@ char **leerArchivo(char *file, int *len_file){
 }
 
 
+int generarRandom(unsigned long long* prodRand, long* rand1, long* rand2, int upperLimit) {
+  *rand1 = rand();
+  *rand2 = rand();
+  *prodRand = *rand1 * *rand2;
+  // printf("random: %llu\n", *prodRand%upperLimit);
+  return (int) (*prodRand % upperLimit);
+}
+
+
 void escribirPersonas(char **nombres, char **paises, int nPersonas, int len_nombres, int len_paises, char *file) {
   FILE *fp_salida;
   fp_salida = fopen(file, "w");
-  
-  srand(time(0)); // Establece la seed del random igual al tiempo actual, lo que asegura que la secuencia de números generada sea distinta en cada ejecución del programa.
-  Persona *persona = malloc(sizeof(Persona));
+  char *nombreBuffer, *lugarBuffer;
+  int edadBuffer;
+  srand(time(0));
+  unsigned long long prodRand;
+  long rand1, rand2;
   for (int i = 0; i < nPersonas; i++) {
-    persona->nombre = nombres[rand() % len_nombres];
-    persona->edad = (rand() % 100) + 1;
-    persona->lugarDeNacimiento = paises[rand() % len_paises];
-    fprintf(fp_salida, "%s, %d, %s\n", persona->nombre, persona->edad, persona->lugarDeNacimiento);
+    nombreBuffer = nombres[generarRandom(&prodRand, &rand1, &rand2, len_nombres)];
+    edadBuffer = (generarRandom(&prodRand, &rand1, &rand2, MAX_EDAD)) + 1;
+    lugarBuffer = paises[generarRandom(&prodRand, &rand1, &rand2, len_paises)];
+    fprintf(fp_salida, "%s, %d, %s\n", nombreBuffer, edadBuffer, lugarBuffer);
   }
-  free(persona);
   fclose(fp_salida);
 }
 
@@ -79,8 +87,6 @@ int main(int argc, char **argv) {
   argv[3] es el nombre del archivo de salida
   argv[4] es un entero que representa la cantidad de personas a generar
 */
-  // setlocale(LC_ALL, "es_ES");
-  // printf("locale: %s\n", setlocale(LC_ALL, ""));
   assert(argc == 5);
   int len_nombres, len_paises;
   int nPersonas = atoi(argv[4]);
