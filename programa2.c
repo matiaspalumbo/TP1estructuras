@@ -4,6 +4,7 @@
 # include <math.h>
 # include <time.h>
 # include <assert.h> 
+# include <locale.h> 
 # include "gdclist.h"
 # include "algoritmos.h"
 
@@ -99,25 +100,25 @@ int main(int argc, char **argv) {
 
   GList listaPersonas = leerPersonas(argv[1]);
   
-  GList copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
-  gdclist_destruir(copia, NULL);
+  // GList copia = copiarLista(listaPersonas);
+  // correrAlgoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
+  // gdclist_destruir(copia, NULL);
   
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
-  gdclist_destruir(copia, NULL);
+  // copia = copiarLista(listaPersonas);
+  // correrAlgoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
+  // gdclist_destruir(copia, NULL);
 
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
-  gdclist_destruir(copia, NULL);
+  // copia = copiarLista(listaPersonas);
+  // correrAlgoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
+  // gdclist_destruir(copia, NULL);
   
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
-  gdclist_destruir(copia, NULL);
+  // copia = copiarLista(listaPersonas);
+  // correrAlgoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
+  // gdclist_destruir(copia, NULL);
   
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
-  gdclist_destruir(copia, NULL);
+  // copia = copiarLista(listaPersonas);
+  // correrAlgoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
+  // gdclist_destruir(copia, NULL);
   
   correrAlgoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
   gdclist_destruir(listaPersonas, destruir_persona);

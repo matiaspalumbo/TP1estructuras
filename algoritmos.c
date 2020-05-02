@@ -60,10 +60,8 @@ int compNombres(void *persona1, void *persona2) {
   int val = 0, prevChar1 = 0, prevChar2 = 0;
   // int len = (strlen(s1) < strlen(s2)) ? strlen(s1) : strlen(s2);
   enum Letra char1, char2;
-  // for (int i = 0; i < len; i++) printf("%d - %d\n", s1[i], s2[i]);
   int i = 0, j = 0;
   while (s1[i] != '\0' && s2[j] != '\0' && val == 0) {
-  // for (int i = 0; (i < len) && (val == 0); i++) {
     if (prevChar1 < 0) {
       // printf("prevChar1: %d - char1 anterior: %d\n", prevChar1, char1);
       prevChar1 = 1;
