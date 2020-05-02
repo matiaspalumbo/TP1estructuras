@@ -56,7 +56,6 @@ int generarRandom(unsigned long long* prodRand, long* rand1, long* rand2, int up
   *rand1 = rand();
   *rand2 = rand();
   *prodRand = *rand1 * *rand2;
-  // printf("random: %llu\n", *prodRand%upperLimit);
   return (int) (*prodRand % upperLimit);
 }
 

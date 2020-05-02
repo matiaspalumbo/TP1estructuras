@@ -33,19 +33,19 @@ void destruir_persona(void *dato);
 void imprimir_edad(void * dato); // BORRAR
 
 // Función del tipo FuncionComparadora. Compara dos numeros.
-int compEdades(void *persona1, void *persona2);
+int comp_edades(void *persona1, void *persona2);
 
 // Función del tipo FuncionComparadora. Compara dos arreglos de char.
-int compNombres(void *persona1, void *persona2);
+int comp_nombres(void *persona1, void *persona2);
 
 // Ordena una lista utilizando Selection Sort.
-GList selectionSort(GList lista, FuncionComparadora comparar);
+GList selection_sort(GList lista, FuncionComparadora comparar);
 
 // Ordena una lista utilizando Insertion Sort.
-GList insertionSort(GList lista, FuncionComparadora comparar);
+GList insertion_sort(GList lista, FuncionComparadora comparar);
 
 // Ordena una lista utilizando Merge Sort.
-GList mergeSort(GList lista, FuncionComparadora comparar);
+GList merge_sort(GList lista, FuncionComparadora comparar);
 
 
 #endif /* __ALGORITMOS_H */
