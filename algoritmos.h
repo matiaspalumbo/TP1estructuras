@@ -2,6 +2,7 @@
 #define __ALGORITMOS_H__
 
 #include <stddef.h>
+#include <wchar.h>
 #include "gdclist.h"
 
 /* Archivo de cabecera de la implementación de los algoritmos de ordenación 

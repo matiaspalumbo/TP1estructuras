@@ -106,12 +106,12 @@ int main(int argc, char **argv) {
 //   argv[1] es el nombre del archivo de salida de programa1, es decir, el que contiene las personas (datos de prueba)
 //   argv[2] es el nombre del archivo donde se volcaran los resulados de la aplicacion de los algoritmos
 //   */
-  setlocale(LC_ALL, "es_ES");
-  printf("locale: %s\n", setlocale(LC_ALL, ""));
+  // setlocale(LC_ALL, "es_ES");
+  // printf("locale: %s\n", setlocale(LC_ALL, ""));
   GList listaPersonas = leerPersonas(argv[1]);
-  printf("done\n");
-  gdclist_recorrer(listaPersonas, imprimir_persona);
-  printf("done 2\n");
+  // printf("done\n");
+  // gdclist_recorrer(listaPersonas, imprimir_persona);
+  // printf("done 2\n");
   
   // GList copia = copiarLista(listaPersonas);
   // correrAlgoritmo("Selection_Sort_comp_edades_ascendente.txt", copia, selectionSort, compEdades);
@@ -121,9 +121,9 @@ int main(int argc, char **argv) {
   // correrAlgoritmo("Selection_Sort_comp_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
   // gdclist_destruir(copia, NULL);
 
-  wprintf(L"%s\n", ((Persona*)(listaPersonas->dato))->nombre);
-  wprintf(L"%s\n", ((Persona*)(listaPersonas->sig->dato))->nombre);
-  printf("%d\n", wcscoll(((Persona*)(listaPersonas->dato))->nombre, ((Persona*)(listaPersonas->sig->dato))->nombre));
+  // wprintf(L"%s\n", ((Persona*)(listaPersonas->dato))->nombre);
+  // wprintf(L"%s\n", ((Persona*)(listaPersonas->sig->dato))->nombre);
+  // printf("%d\n", wcscoll(((Persona*)(listaPersonas->dato))->nombre, ((Persona*)(listaPersonas->sig->dato))->nombre));
   // for (int i=0; i < strlen((char*)((Persona*)(listaPersonas->dato))->nombre); i ++) {
     // wprintf(L"%c\n", (((Persona*)(listaPersonas->dato))->nombre)[i]);
   // }
@@ -140,8 +140,9 @@ int main(int argc, char **argv) {
   // correrAlgoritmo("Merge_Sort_comp_edades_ascendente.txt", copia, mergeSort, compEdades);
   // gdclist_destruir(copia, NULL);
   
-  // correrAlgoritmo("Merge_Sort_comp_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
-  // gdclist_destruir(listaPersonas, destruir_persona);
+  correrAlgoritmo("Merge_Sort_comp_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
+  gdclist_recorrer(listaPersonas, imprimir_persona);
+  gdclist_destruir(listaPersonas, destruir_persona);
 
 // wchar_t *ch = malloc(sizeof(wchar_t));
 // *ch = ;

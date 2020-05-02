@@ -1,7 +1,7 @@
 # TP1estructuras
 
 Comando para ejecutar programa1: 
-./programa1 nombres1.txt paises.txt personas.txt numero_personas
+./programa1 nombres1.txt paises.txt personas.txt 20000
 
 Comando para ejecutar programa2:
 ./programa2 personas.txt
