@@ -10,13 +10,6 @@ Selection Sort, Insertion Sort y Merge Sort sobre listas generales doblemente
 enlazadas circulares y algunas funciones auxiliares. */
 
 
-typedef struct { // Estructura de una Persona.
-  char *nombre;
-  int edad;
-  char *lugarDeNacimiento; //(pais o ciudad)
-} Persona;
-
-
 /* Declaración de un puntero a una función llamado FuncionComparadora que toma 
 como argumentos dos punteros a void y retorna un int (entero). 
 Retorna un entero menor que, igual a, o mayor que 0 , si el primer argumento 
