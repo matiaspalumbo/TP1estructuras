@@ -98,26 +98,26 @@ int main(int argc, char **argv) {
   GList listaPersonas = leer_personas(argv[1]);
   
   GList copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
+  correr_algoritmo("Selection_Sort_edades_ascendente.txt", copia, selection_sort, comp_edades);
   gdclist_destruir(copia, NULL);
   
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
+  correr_algoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selection_sort, comp_nombres);
   gdclist_destruir(copia, NULL);
 
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
+  correr_algoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertion_sort, comp_edades);
   gdclist_destruir(copia, NULL);
   
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
+  correr_algoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertion_sort, comp_nombres);
   gdclist_destruir(copia, NULL);
   
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
+  correr_algoritmo("Merge_Sort_edades_ascendente.txt", copia, merge_sort, comp_edades);
   gdclist_destruir(copia, NULL);
   
-  correr_algoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
+  correr_algoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, merge_sort, comp_nombres);
   gdclist_destruir(listaPersonas, destruir_persona);
 
 
