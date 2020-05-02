@@ -13,23 +13,23 @@ all : $(PROG1) $(PROG2)
 
 # Ejecutable del programa 1.
 $(PROG1) : $(PROG1).c
-	$(CC) $(CFLAGS) -o $@ $^
+	gcc $(CFLAGS) -o $@ $^
 
 # Archivo objeto de la implementacion de listas generales.
 $(LISTAS:.c=.o) : $(LISTAS) $(LISTAS.c=.h)
-	$(CC) -c $(LISTAS)
+	gcc -c $(LISTAS)
 
 # Archivo objeto de la implementacion de los algoritmos de ordenación.
 $(ALGORITMOS:.c=.o) : $(ALGORITMOS) $(ALGORITMOS:.c=.h) $(LISTAS:.c=.h)
-	$(CC) -c $(ALGORITMOS)
+	gcc -c $(ALGORITMOS)
 
 # Archivo objeto de la implementación de funciones con la estructura Persona.
 $(PERSONAS:.c=.o) : $(PERSONAS) $(PERSONAS:.c=.h)
-	$(CC) -c $(PERSONAS)
+	gcc -c $(PERSONAS)
 
 # Ejecutable de programa 2.
 $(PROG2) : $(PROG2).c $(LISTAS:.c=.o) $(ALGORITMOS:.c=.o) $(PERSONAS:.c=.o)
-	$(CC) $(CFLAGS) -o $@ $^
+	gcc $(CFLAGS) -o $@ $^
 
 # Destino simbólico que borra todos los archivos con extensión .o cuando se invoca.
 clean: 
