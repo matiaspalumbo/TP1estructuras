@@ -1,9 +1,9 @@
 # include <string.h>
 # include <stdio.h>
-# include <personas.h>
+# include "personas.h"
 
-/* Archivo del código fuente de la implementación de los algoritmos de ordenación
-sobre listas generales doblemente enlazadas circulares y algunas funciones auxiliares. */
+/* Archivo del código fuente de la implementación de funciones auxiliares
+sobre la estructura Persona. */
 
 int convertir_letra(char c) {
   int val;

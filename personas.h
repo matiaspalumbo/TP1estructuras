@@ -3,9 +3,8 @@
 
 #include <stddef.h>
 
-/* Archivo de cabecera de la implementación de los algoritmos de ordenación 
-Selection Sort, Insertion Sort y Merge Sort sobre listas generales doblemente
-enlazadas circulares y algunas funciones auxiliares. */
+/* Archivo de cabecera de la implementación de funciones auxiliares
+sobre la estructura Persona. */
 
 
 typedef struct { // Estructura de una Persona.

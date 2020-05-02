@@ -3,9 +3,9 @@
 # include <stdlib.h>
 # include <time.h>
 # include <assert.h> 
-# include <locale.h> 
 # include "gdclist.h"
 # include "algoritmos.h"
+# include "personas.h"
 
 // Constante para la longitud de los strings auxiliares para leer archivos.
 #define MAX_STR_SIZE 70
