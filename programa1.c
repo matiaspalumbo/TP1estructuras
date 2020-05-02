@@ -6,10 +6,10 @@
 
 
 #define MAX_STR_SIZE 70  // Constante para la longitud de los strings auxiliares para leer archivos.
-#define MAX_EDAD 100 // Constante que determina la edad máxima de cada persona
+#define MAX_EDAD 100 // Constante que determina la edad máxima de cada persona.
 
 
-int contarLineas(FILE *fp) { // Función que cuenta la cantidad de líneas del archivo que se pasa como argumento.
+int contar_lineas(FILE *fp) { // Función que cuenta la cantidad de líneas del archivo que se pasa como argumento.
   int lineas_fp = 0;
   char linea[MAX_STR_SIZE]; // Tamaño de línea elegido acorde a los archivos que estamos usando.
   while (! feof(fp)) { // fgets lee hasta encontrar un "\n", por lo tanto el bucle lee línea a línea y por cada una aumenta el contador. 
@@ -21,7 +21,7 @@ int contarLineas(FILE *fp) { // Función que cuenta la cantidad de líneas del a
 }
 
 
-char **leerArchivo(char *file, int *len_file){
+char **leer_archivo(char *file, int *len_file){
   // Recibe una archivo y un puntero a int para guardar su longitud en líneas.
   FILE *archivo;
   archivo = fopen(file, "r"); // Abre el archivo pasado como parametro.
@@ -52,7 +52,7 @@ char **leerArchivo(char *file, int *len_file){
 }
 
 
-int generarRandom(unsigned long long* prodRand, long* rand1, long* rand2, int upperLimit) {
+int generar_random(unsigned long long *prodRand, long *rand1, long *rand2, int upperLimit) {
   *rand1 = rand();
   *rand2 = rand();
   *prodRand = *rand1 * *rand2;
@@ -61,7 +61,7 @@ int generarRandom(unsigned long long* prodRand, long* rand1, long* rand2, int up
 }
 
 
-void escribirPersonas(char **nombres, char **paises, int nPersonas, int len_nombres, int len_paises, char *file) {
+void escribir_personas(char **nombres, char **paises, int nPersonas, int len_nombres, int len_paises, char *file) {
   /* Función que crea las Personas y las imprime en el archivo de salida. 
   Recibe los arreglos con nombres y paises/ciudades, sus longitudes, la cantidad 
   de Personas a crear y el archivo de salida en el cual escribirlas. */
@@ -79,15 +79,22 @@ void escribirPersonas(char **nombres, char **paises, int nPersonas, int len_nomb
     /* Por cada iteración calcula 3 números random dentro del rango correspondiente 
     que representan el índice del nombre, la edad, y el índice del pais/ciudad de la 
     Persona a crear, respectivamente, y le asigna el valor a cada variable de la Persona. */
-    nombre = nombres[generarRandom(&prodRand, &rand1, &rand2, len_nombres)];
-    edad = generarRandom(&prodRand, &rand1, &rand2, MAX_EDAD) + 1;
-    lugarDeNacimiento = paises[generarRandom(&prodRand, &rand1, &rand2, len_paises)];
+    nombre = nombres[generar_random(&prodRand, &rand1, &rand2, len_nombres)];
+    edad = generar_random(&prodRand, &rand1, &rand2, MAX_EDAD) + 1;
+    lugarDeNacimiento = paises[generar_random(&prodRand, &rand1, &rand2, len_paises)];
     // Luego la imprime en el archivo en el formato acordado.
     fprintf(fp_salida, "%s, %d, %s\n", nombre, edad, lugarDeNacimiento);
   }
   fclose(fp_salida); // Cierra el archivo.
 }
 
+void libera_memoria(char **nombres, char **paises, int len_nombres, int len_paises) {
+  // Libera los espacios de memoria asignados con malloc para los arreglos de nombres y paises.
+  for (int i = 0; i < len_nombres; i++) free(nombres[i]);
+  for (int i = 0; i < len_paises; i++) free(paises[i]);
+  free(nombres);
+  free(paises);
+}
 
 int main(int argc, char **argv) {
   /*
@@ -104,17 +111,13 @@ int main(int argc, char **argv) {
   int len_nombres, len_paises;
   int nPersonas = atoi(argv[4]); // Cantidad de Personas que hay que crear.
   // Arreglo con todos los nombres para crear las Personas.
-  char **nombres = leerArchivo(argv[1], &len_nombres);
+  char **nombres = leer_archivo(argv[1], &len_nombres);
   // Arreglo con todos los paises y ciudades para crear las Personas.
-  char **paises = leerArchivo(argv[2], &len_paises);
+  char **paises = leer_archivo(argv[2], &len_paises);
 
+  escribir_personas(nombres, paises, nPersonas, len_nombres, len_paises, argv[3]);
 
-  escribirPersonas(nombres, paises, nPersonas, len_nombres, len_paises, argv[3]);
+  libera_memoria(nombres, paises, len_nombres, len_paises);
 
-  // Libera los espacios de memoria asignados con malloc.
-  for (int i = 0; i < len_nombres; i++) free(nombres[i]);
-  for (int i = 0; i < len_paises; i++) free(paises[i]);
-  free(nombres);
-  free(paises);
   return 0;
 }
