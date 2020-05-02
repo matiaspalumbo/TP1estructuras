@@ -3,6 +3,7 @@
 # include <stdlib.h>
 # include <time.h>
 # include <assert.h> 
+# include <locale.h> 
 # include "gdclist.h"
 # include "algoritmos.h"
 
