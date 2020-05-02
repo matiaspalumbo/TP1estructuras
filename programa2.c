@@ -20,7 +20,7 @@ GList leer_personas(char *file) {
   FILE *fp_personas;
   fp_personas = fopen(file, "r"); // Abre el archivo pasado como parametro en formato lectura.
   GList listaPersonas = gdclist_crear(); // Crea la lista de Personas.
-  char *nombreBuffer, *paisBuffer;
+  char nombreBuffer[MAX_STR_SIZE], paisBuffer[MAX_STR_SIZE];
   int len_nombre, len_pais;
   while (! feof(fp_personas)) { // El bucle itera hasta que se llegue al final del archivo.
     // Le asigna un espacio en memoria a la Persona.

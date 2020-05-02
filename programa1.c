@@ -25,7 +25,7 @@ char **leer_archivo(char *file, int *len_file){
   // Recibe una archivo y un puntero a int para guardar su longitud en líneas.
   FILE *archivo;
   archivo = fopen(file, "r"); // Abre el archivo pasado como parametro.
-  *len_file = contarLineas(archivo); // Cuenta la cantidad de líneas del archivo.
+  *len_file = contar_lineas(archivo); // Cuenta la cantidad de líneas del archivo.
   rewind(archivo); // Vuelve al inicio del arhcivo.
 
   // Crea un arreglo de punteros a char de la longitud del archivo para leer cada línea.

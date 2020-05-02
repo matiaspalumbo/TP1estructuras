@@ -131,9 +131,9 @@ GList merge_sort(GList lista, FuncionComparadora comparar) {
     finalLista2->sig = derOrdenado;
     derOrdenado->ant = finalLista2;
     // printf("ListaL: "); gdclist_recorrer(izqOrdenado, imprimir_edad); puts("");
-    izqOrdenado = mergeSort(izqOrdenado, comparar);
+    izqOrdenado = merge_sort(izqOrdenado, comparar);
     // printf("ListaR: "); gdclist_recorrer(derOrdenado, imprimir_edad); puts("");
-    derOrdenado = mergeSort(derOrdenado, comparar);
+    derOrdenado = merge_sort(derOrdenado, comparar);
     listaOrdenada = merge(izqOrdenado, derOrdenado, comparar);
   }
   return listaOrdenada;
