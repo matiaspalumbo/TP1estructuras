@@ -11,9 +11,9 @@ enlazadas circulares y algunas funciones auxiliares. */
 
 
 typedef struct { // Estructura de una Persona.
-  wchar_t *nombre;
+  char *nombre;
   int edad;
-  wchar_t *lugarDeNacimiento; //(pais o ciudad)
+  char *lugarDeNacimiento; //(pais o ciudad)
 } Persona;
 
 

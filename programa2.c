@@ -65,7 +65,7 @@ void correrAlgoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Funci
   clock_t inicioSort, finalSort;
   inicioSort = clock(); // Toma el tiempo antes de correr el algoritmo.
   lista = ordenar(lista, comparar); // Corre el algoritmo con la función sobre la lista.
-  gdclist_recorrer(lista, imprimir_persona);
+  // gdclist_recorrer(lista, imprimir_persona);
   finalSort = clock(); // Toma el tiempo despues de correr el algoritmo.
   // Calcula el tiempo de ejecución del algoritmo.
   double tiempoEjecucion = (double)(finalSort - inicioSort) / CLOCKS_PER_SEC;
@@ -99,29 +99,28 @@ int main(int argc, char **argv) {
 
   GList listaPersonas = leerPersonas(argv[1]);
   
-  // GList copia = copiarLista(listaPersonas);
-  // correrAlgoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
-  // gdclist_destruir(copia, NULL);
+  GList copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
+  gdclist_destruir(copia, NULL);
   
-  // copia = copiarLista(listaPersonas);
-  // correrAlgoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
-  // gdclist_destruir(copia, NULL);
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
+  gdclist_destruir(copia, NULL);
 
-  // copia = copiarLista(listaPersonas);
-  // correrAlgoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
-  // gdclist_destruir(copia, NULL);
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
+  gdclist_destruir(copia, NULL);
   
-  // copia = copiarLista(listaPersonas);
-  // correrAlgoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
-  // gdclist_destruir(copia, NULL);
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
+  gdclist_destruir(copia, NULL);
   
-  // copia = copiarLista(listaPersonas);
-  // correrAlgoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
-  // gdclist_destruir(copia, NULL);
+  copia = copiarLista(listaPersonas);
+  correrAlgoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
+  gdclist_destruir(copia, NULL);
   
   correrAlgoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
   gdclist_destruir(listaPersonas, destruir_persona);
-
 
 
 
