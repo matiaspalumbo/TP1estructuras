@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt, a4paper, twoside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{natbib}
@@ -83,12 +83,33 @@
         %\vspace{0.5cm}
     \end{center}
  \end{titlepage}
- 
-% \ \par
-% \tableofcontents
-% \pagebreak
+ \ \par
+% \vspace{.5cm}
+\noindent A continuación, se detallan las elecciones en general y particularidades de la resolución del Trabajo Práctico 1.\par
 
-\section{Introducción}
+\section{Elección de estructura de datos}
+
+La estructuras de datos utilizadas a lo largo del programa son listas generales, y decidimos implementarlas como listas doblemente enlazadas circulares. Esta elección se basó principalmente en la capacidad de poder recorrer la lista en ambos sentidos (al tener punteros al elemento anterior y al siguiente en cada nodo) y en la facilidad y rapidez con la que se puede acceder al último elemento de la lista sin necesidad de una estructura auxiliar (ya que al ser circulares el nodo anterior al comienzo de la lista es el último elemento).\par
+
+Por ejemplo, estas características de las listas elegidas se aprovecharon en la implementación del algoritmo Insertion Sort y Merge Sort, reduciendo significativamente la rapidez.\par
+
+\section{Compilación de los programas}
+
+La estructuración de los archivos y sus dependencias se encuentra detallada en el archivo \textit{makefile}. Para compilar el programa se utiliza el comando \verb|make all| o \verb|make|. A su vez, luego de la compilación, los ejecutables se corren mediante los siguientes comandos:\par
+
+\noindent \verb|./programa1 ARCHIVO_NOMBRES ARCHIVO_LUGARES ARCHIVO_SALIDA CANT_PERSONAS| \newline
+\noindent \verb|./programa2 ARCHIVO_SALIDA|\par
+
+% El nombre de los archivos de salida donde se vuelcan los resultados de \verb|programa2| son generados automáticamente
+% VEEEEEEEERRR
+
+\section{Comparación de resultados}
+
+Para comparar diferentes atributos de las personas se hizo uso de las funciones comparadoras \verb|comp_edades| y \verb|comp_nombres|, las cuales comparan las edades (en forma ascendente) y nombres (alfabéticamente) de cada persona, respectivamente.
+
+\section{Bibliografía}
+
+
 
 
 \end{document}
