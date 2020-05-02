@@ -1,7 +1,6 @@
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <math.h>
 # include <time.h>
 # include <assert.h> 
 # include "gdclist.h"
@@ -15,33 +14,31 @@ static void imprimir_persona(void * dato) {
   wprintf(L"%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
 }
 
-GList leerPersonas(char *file) {
+GList leer_personas(char *file) {
   // Recibe el archivo con las Personas y crea una lista con todas ellas.
   FILE *fp_personas;
   fp_personas = fopen(file, "r"); // Abre el archivo pasado como parametro en formato lectura.
   GList listaPersonas = gdclist_crear(); // Crea la lista de Personas.
-  char* personaBuff;
+  char *nombreBuffer, *paisBuffer;
+  int len_nombre, len_pais;
   while (! feof(fp_personas)) { // El bucle itera hasta que se llegue al final del archivo.
-    // Le asigna un espacio en memoria a la Persona y a sus variable internas.
+    // Le asigna un espacio en memoria a la Persona.
     Persona *persona = malloc(sizeof(Persona));
-    persona->nombre = malloc(sizeof(char)*MAX_STR_SIZE);
-    persona->lugarDeNacimiento = malloc(sizeof(char)*MAX_STR_SIZE);
     // Lee una línea del archivo en el formato que esta escrito y lo guarda en las 3 variables internas de la Persona.
-    fscanf(fp_personas, "%[^,], %d, %[^\n]\n", personaBuff, &(persona->edad), persona->lugarDeNacimiento);
-    int lengthStr = strlen(personaBuff);
-    // for (int i = 0; i < lengthStr; i++) {
-    //   if (personaBuff[i] < 0) {
-    //     personaBuff[i] = 'N';
-    //   }
-    // }
-    strcpy(persona->nombre, personaBuff);
+    fscanf(fp_personas, "%[^,], %d, %[^\n]\n", nombreBuffer, &(persona->edad), paisBuffer);
+    len_nombre = strlen(nombreBuffer);
+    len_pais = strlen(paisBuffer);
+    persona->nombre = malloc(sizeof(char) * len_nombre);
+    persona->lugarDeNacimiento = malloc(sizeof(char) * len_pais);
+    strcpy(persona->nombre, nombreBuffer);
+    strcpy(persona->lugarDeNacimiento, paisBuffer);
     listaPersonas = gdclist_agregar_final(listaPersonas, (void*) persona);
   }
   return listaPersonas; // Retorna la lista con Personas.
 }
 
 
-GList copiarLista(GList lista) {
+GList copiar_lista(GList lista) {
   /* Función que dada una lista del tipo GList crea una nueva lista con nuevos nodos
   pero cuyos datos son los mismos. */
   int longitud = gdclist_longitud(lista); // Longitud de la lista.
@@ -55,7 +52,7 @@ GList copiarLista(GList lista) {
 }
 
 
-void correrAlgoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
+void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
   /* Función que dado un algoritmo de ordenación, una función comparadora de datos 
   y una lista, aplica el algoritmo con la función sobre la lista y escribe los 
   resultados en el archivo parasado como argumento. */
@@ -97,29 +94,29 @@ int main(int argc, char **argv) {
 //   argv[2] es el nombre del archivo donde se volcaran los resulados de la aplicacion de los algoritmos
 //   */
 
-  GList listaPersonas = leerPersonas(argv[1]);
+  GList listaPersonas = leer_personas(argv[1]);
   
-  GList copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
+  GList copia = copiar_lista(listaPersonas);
+  correr_algoritmo("Selection_Sort_edades_ascendente.txt", copia, selectionSort, compEdades);
   gdclist_destruir(copia, NULL);
   
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
+  copia = copiar_lista(listaPersonas);
+  correr_algoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selectionSort, compNombres);
   gdclist_destruir(copia, NULL);
 
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
+  copia = copiar_lista(listaPersonas);
+  correr_algoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertionSort, compEdades);
   gdclist_destruir(copia, NULL);
   
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
+  copia = copiar_lista(listaPersonas);
+  correr_algoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertionSort, compNombres);
   gdclist_destruir(copia, NULL);
   
-  copia = copiarLista(listaPersonas);
-  correrAlgoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
+  copia = copiar_lista(listaPersonas);
+  correr_algoritmo("Merge_Sort_edades_ascendente.txt", copia, mergeSort, compEdades);
   gdclist_destruir(copia, NULL);
   
-  correrAlgoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
+  correr_algoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, mergeSort, compNombres);
   gdclist_destruir(listaPersonas, destruir_persona);
 
 
