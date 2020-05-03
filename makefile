@@ -5,7 +5,7 @@ PROG1 = programa1
 PROG2 = programa2
 LISTAS = gdclist.c
 ALGORITMOS = algoritmos.c
-PERSONAS = personas.c
+PERSONAS = persona.c
 
 
 # Destino simbólico que actualiza todos los ejecutables con una sola llamada.

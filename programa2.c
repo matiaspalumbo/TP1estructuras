@@ -5,15 +5,10 @@
 # include <assert.h> 
 # include "gdclist.h"
 # include "algoritmos.h"
-# include "personas.h"
+# include "persona.h"
 
-// Constante para la longitud de los strings auxiliares para leer archivos.
-#define MAX_STR_SIZE 70
+#define MAX_STR_SIZE 70 // Constante para la longitud de los strings auxiliares para leer archivos.
 
-
-static void imprimir_persona(void * dato) {
-  wprintf(L"%s - %d - %s\n", (char*)(((Persona*)dato)->nombre), ((Persona*) dato)->edad, (char*)(((Persona*)dato)->lugarDeNacimiento));
-}
 
 GList leer_personas(char *file) {
   // Recibe el archivo con las Personas y crea una lista con todas ellas.
@@ -29,8 +24,8 @@ GList leer_personas(char *file) {
     fscanf(fp_personas, "%[^,], %d, %[^\n]\n", nombreBuffer, &(persona->edad), paisBuffer);
     len_nombre = strlen(nombreBuffer);
     len_pais = strlen(paisBuffer);
-    persona->nombre = malloc(sizeof(char) * len_nombre);
-    persona->lugarDeNacimiento = malloc(sizeof(char) * len_pais);
+    persona->nombre = malloc(sizeof(char) * (len_nombre + 1));
+    persona->lugarDeNacimiento = malloc(sizeof(char) * (len_pais+1));
     strcpy(persona->nombre, nombreBuffer);
     strcpy(persona->lugarDeNacimiento, paisBuffer);
     listaPersonas = gdclist_agregar_final(listaPersonas, (void*) persona);
@@ -63,7 +58,6 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   clock_t inicioSort, finalSort;
   inicioSort = clock(); // Toma el tiempo antes de correr el algoritmo.
   lista = ordenar(lista, comparar); // Corre el algoritmo con la función sobre la lista.
-  // gdclist_recorrer(lista, imprimir_persona);
   finalSort = clock(); // Toma el tiempo despues de correr el algoritmo.
   // Calcula el tiempo de ejecución del algoritmo.
   double tiempoEjecucion = (double)(finalSort - inicioSort) / CLOCKS_PER_SEC;
