@@ -2,7 +2,6 @@
 #define __ALGORITMOS_H__
 
 #include <stddef.h>
-#include <wchar.h>
 #include "gdclist.h"
 
 
@@ -14,12 +13,12 @@ enlazadas circulares. */
 /* Declaración de un puntero a una función que toma como argumentos dos punteros
 a void y retorna un entero. Las funciones de este tipo se utilizarán para comparar 
 dos valores según un criterio, y devuelve un número negativo si dato1 < dato2, 0 si 
-dato1 == dato2, y un número mayor positivo si dato1 > dato2. */
+dato1 == dato2, y un número positivo si dato1 > dato2. */
 typedef int (*FuncionComparadora) (void *dato1, void *dato2);
 
-/* Declaración de un puntero a una función que toma como argumento una GList y
- una FuncionComparadora y retorna una GList. Las funciones de este tipo se utilizarán
- para ordenar la lista dada. */
+/* Declaración de un puntero a una función que toma como argumento una GList y 
+una FuncionComparadora y retorna una GList. Las funciones de este tipo se utilizarán 
+para ordenar la lista dada. */
 typedef GList (*AlgoritmoSorting) (GList lista, FuncionComparadora comparar);
 
 

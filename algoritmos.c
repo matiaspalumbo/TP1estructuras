@@ -32,21 +32,25 @@ GList selection_sort(GList lista, FuncionComparadora comparar) {
   return lista;
 }
 
+/* Insertion Sort ordena una lista comparando la sublista ordenada al principio de la lista (que comienza siendo unitaria), 
+con el elemento inmediato posterior, ubicandolo en el orden correspondiente con respecto a los elementos ya ordenados, aumentando así
+la longitud de la sublista ordenada por 1. Repite este proceso hasta ordenar el último elemento. */
 GList insertion_sort(GList lista, FuncionComparadora comparar) { 
   if (!gdclist_es_vacia(lista)) {
     GNodo *nodoActual = lista, *nodoAComparar, *ultimoOrdenado;
     int j, longitud = gdclist_longitud(lista);
-    for (int i = 1; i < longitud; i++) {
+    for (int i = 1; i < longitud; i++) { // La iteración comienza del segundo elemento pues el primero esta trivialmente ordenado.
       j = i - 1;
       ultimoOrdenado = nodoActual;
       nodoAComparar = nodoActual->sig;
-      while (j >= 0) {
+      while (j >= 0) { // Compara el último elemento de la sublista ordenada con su siguiente.
         if (comparar(nodoAComparar->dato, nodoActual->dato) < 0) {
+          // Si no están ordenados los intercambia y repite la comparación entre el nuevo elemento y su anterior hasta que esté ordenado.
           lista = gdclist_intercambiar(lista, nodoActual, nodoAComparar);
           j--;
           nodoActual = nodoActual->ant;
           nodoAComparar = nodoAComparar->ant;
-        } else j = -1;
+        } else j = -1; // Si están ordenados el nuevo nodo pasa a ser el último de la sublista ordenada y avanza al proximo.
       }
       nodoActual = ultimoOrdenado->sig;
     }
@@ -83,7 +87,7 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
     resultado = resultado->sig;
   }
   // A lo sumo uno de los dos siguiente bucles se ejecutarán dependiendo de la lista de mayor longitud.
-  // Se agregan los elementos restantes
+  // Se agregan los elementos restantes.
   while (!gdclist_es_vacia(listaL)) {
       resultado->sig = listaL;
       listaL->ant = resultado;
