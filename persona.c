@@ -3,7 +3,8 @@
 # include <stdlib.h>
 # include "persona.h"
 
-/* Archivo del código fuente de la implementación de las funciones auxiliares
+
+/* Archivo con la implementación de las funciones auxiliares
 sobre la estructura Persona. */
 
 

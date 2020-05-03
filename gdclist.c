@@ -3,41 +3,41 @@
 #include <assert.h>
 #include "gdclist.h"
 
-// Archivo del código fuente de la implementación de listas generales doblemente enlazadas circulares.
+
+/* Archivo con la implementación de las funciones sobre listas declaradas en gdclist.h. */
 
 
-GList gdclist_crear() { // Función que devuelve una lista vacia.
+GList gdclist_crear() {
   return NULL;
 }
 
 void gdclist_destruir(GList lista, Destruir funcion_destructora) {
-  /* Función que libera el espacio en memoria que ocupa una lista (la destruye),
-  y en caso de ser necesario, el dato que guarda cada nodo. */
-  lista->ant->sig = NULL; // Iguala a NULL el siguiente del último elemento de la lista y asi deja de ser circular.
-  GNodo *nodoAEliminar; // Variable auxiliar.
+  lista->ant->sig = NULL; // Iguala a NULL el siguiente del último elemento de la lista para facilitar la terminación del bucle.
+  GNodo *nodoAEliminar;
   while (lista != NULL) { // El bucle se repite hasta que lista llegue a su último elemento.
-    // Por cada iteración, guarda un nodo en la variable auxiliar e iguala lista al siguiente nodo.
+  // Por cada iteración, elimina el nodo y si es necesario el dato al que apunta.
     nodoAEliminar = lista;
     lista = lista->sig;
     // En caso de ser necesario libera el espacio en memoria del dato del nodo.
-    if (funcion_destructora != NULL) funcion_destructora(nodoAEliminar->dato);
-    // Y luego libera la memoria del propio nodo.
+    // Si funcion_destructora == NULL, se asume que no es necesario destruir el dato.
+    if (funcion_destructora != NULL)
+      funcion_destructora(nodoAEliminar->dato);
+    // Y luego se libera la memoria del propio nodo.
     free(nodoAEliminar);
   }
 }
 
-int gdclist_es_vacia(GList lista) { // Función que determina si la lista es vacía.
+int gdclist_es_vacia(GList lista) {
   return lista == NULL;
 }
 
 int gdclist_longitud(GList lista) {
-  // Función que devuelve la longitud de la lista dada.
   int longitud;
   if (gdclist_es_vacia(lista)) longitud = 0; // Si la lista es vacia, su longitud es 0.
   else {
-    longitud = 1; // Caso contrario su longitud es al menos 1.
-    GNodo *temp = lista; // Defino un nodo para recorrer la lista.
-    while (temp->sig != lista) { // El bucle itera hasta llegar al último elemento de la lista.
+    longitud = 1; // Caso contrario, su longitud es al menos 1.
+    GNodo *temp = lista;
+    while (temp->sig != lista) {
       // Por cada iteración aumenta la longitud por 1 y avanza un nodo en la lista.
       longitud++;
       temp = temp->sig;
@@ -98,7 +98,7 @@ void* gdclist_leer(GList lista, int pos) {
 
 GList gdclist_intercambiar(GList lista, GNodo *nodo1, GNodo *nodo2) {
   // Función que dada una lista y dos nodos de la misma, intercambia sus datos entre sí.
-  assert(!gdclist_es_vacia(lista)); // Verifico que la lista no sea vacía.
+  assert(nodo1 != NULL && nodo2 != NULL); // Verifico que los nodos no sean vacíos.
   void *aux = nodo1->dato; // Guardo el primer dato en una variable auxiliar.
   nodo1->dato = nodo2->dato; // Luego guardo el segundo dato en el primer nodo.
   nodo2->dato = aux; // Y por último guardo el primer dato en el segundo nodo.

@@ -1,13 +1,13 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <math.h>
 # include "gdclist.h"
 # include "algoritmos.h"
 
 
 /* Archivo con las implementaciones de los algoritmos de ordenación
 sobre listas generales doblemente enlazadas circulares. */
+
 
 /* Selection Sort ordena una lista detectando el elemento mínimo cada vez que la recorre,
 moviéndolo al principio de la lista y repitiendo el proceso con los elementos restantes hasta ordenarla en su totalidad. */

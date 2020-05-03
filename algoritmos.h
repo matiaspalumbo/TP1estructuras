@@ -6,8 +6,7 @@
 
 
 /* Archivo de cabecera de la implementación de los algoritmos de ordenación 
-Selection Sort, Insertion Sort y Merge Sort sobre listas generales doblemente
-enlazadas circulares. */
+Selection Sort, Insertion Sort y Merge Sort. */
 
 
 /* Declaración de un puntero a una función que toma como argumentos dos punteros

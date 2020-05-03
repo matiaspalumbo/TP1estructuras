@@ -14,19 +14,19 @@ typedef struct _GNodo { // Estructura de un nodo de una lista general.
 
 typedef GNodo *GList; // Estructura de una lista general.
 
-/* Declaración de un puntero a una función llamado FuncionVisitante que toma 
-como argumneto un puntero a void y retorna void. */
+/* Puntero a una función que toma como argumneto un puntero a void y retorna void.
+Las funciones de este tipo se utilizarán para recorrer cada nodo de una lista. */
 typedef void (*FuncionVisitante) (void *dato);
 
-/* Declaración de un puntero a una función llamado Destruir que toma como 
-argumento un puntero a void y retorna void. */
+/* Puntero a una función que toma como argumento un puntero a void y retorna void. 
+Funciones de este tipo serán utilizadas para eliminar el dato presente en un nodo de la lista.*/
 typedef void (*Destruir) (void *dato);
 
 
 // Devuelve una lista vacía.
 GList gdclist_crear();
 
-// Destruye de la lista y en caso de que sea necesario, el dato que guarda cada nodo.
+// Destruye la lista dada y, en caso de que sea necesario, el dato que guarda cada nodo.
 void gdclist_destruir(GList lista, Destruir funcion_destructora);
 
 // Determina si la lista es vacía.
@@ -35,20 +35,19 @@ int gdclist_es_vacia(GList lista);
 // Devuelve la longitud de una lista.
 int gdclist_longitud(GList lista);
 
-// Agrega un elemento al inicio de la lista. 
+// Agrega un elemento al inicio de una lista. 
 GList gdclist_agregar_inicio(GList lista, void *dato);
 
-// Agrega un elemento al final de la lista.
+// Agrega un elemento al final de una lista.
 GList gdclist_agregar_final(GList lista, void *dato);
 
-// Lee el dato en la posición pos de la lista.
-void *gdclist_leer(GList lista, int pos);
+// Lee el dato en la posición pos de una lista.
+void *gdclist_leer(GList lista, int pos); // BORRAR
 
-// Dada una lista y dos nodos de la lista, intercambia los datos de los nodos nodo1 y nodo2 entre si.
+// Dados dos nodos de una lista, intercambia los datos entre sí.
 GList gdclist_intercambiar(GList lista, GNodo *nodo1, GNodo *nodo2);
 
-// BORRAR
 // Dada una lista y una función visitante, recorre la lista y aplica visit a cada nodo.
-void gdclist_recorrer(GList lista, FuncionVisitante visit);
+void gdclist_recorrer(GList lista, FuncionVisitante visit); // BORRAR
 
 #endif /* __GDCLIST_H */
