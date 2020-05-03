@@ -5,31 +5,23 @@
 #include <wchar.h>
 #include "gdclist.h"
 
+
 /* Archivo de cabecera de la implementación de los algoritmos de ordenación 
 Selection Sort, Insertion Sort y Merge Sort sobre listas generales doblemente
-enlazadas circulares y algunas funciones auxiliares. */
+enlazadas circulares. */
 
 
-/* Declaración de un puntero a una función llamado FuncionComparadora que toma 
-como argumentos dos punteros a void y retorna un int (entero). 
-Retorna un entero menor que, igual a, o mayor que 0 , si el primer argumento 
-es considerado, respectivamente, menor que, igual a o mayor que el segundo. */
+/* Declaración de un puntero a una función que toma como argumentos dos punteros
+a void y retorna un entero. Las funciones de este tipo se utilizarán para comparar 
+dos valores según un criterio, y devuelve un número negativo si dato1 < dato2, 0 si 
+dato1 == dato2, y un número mayor positivo si dato1 > dato2. */
 typedef int (*FuncionComparadora) (void *dato1, void *dato2);
 
-/* Declaración de un puntero a una función llamado AlgoritmoSorting que toma como 
-argumneto una lista de tipo GList y una FuncionComparadora y retorna una lista de tipo GList. */
+/* Declaración de un puntero a una función que toma como argumento una GList y
+ una FuncionComparadora y retorna una GList. Las funciones de este tipo se utilizarán
+ para ordenar la lista dada. */
 typedef GList (*AlgoritmoSorting) (GList lista, FuncionComparadora comparar);
 
-// Toma un puntero a void que es una Persona y libera su espacio el memoria.
-void destruir_persona(void *dato);
-
-void imprimir_edad(void * dato); // BORRAR
-
-// Función del tipo FuncionComparadora. Compara dos numeros.
-int comp_edades(void *persona1, void *persona2);
-
-// Función del tipo FuncionComparadora. Compara dos arreglos de char.
-int comp_nombres(void *persona1, void *persona2);
 
 // Ordena una lista utilizando Selection Sort.
 GList selection_sort(GList lista, FuncionComparadora comparar);
