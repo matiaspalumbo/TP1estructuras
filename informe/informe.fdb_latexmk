@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1588491742 "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf" "informe" 1588491743
-  "/Users/Mati/Documents/TP1estructuras/informe/informe.aux" 1588491743 486 ab43777f7d006b94cc60cd8ec65dd21c ""
-  "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" 1588491741 4849 cbdd9fb9b17b8d826fc3996a93aad1c4 ""
-  "/dev/null" 1588491724 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1588537130 "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf" "informe" 1588537131
+  "/Users/Mati/Documents/TP1estructuras/informe/informe.aux" 1588537131 486 ab43777f7d006b94cc60cd8ec65dd21c ""
+  "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" 1588537128 4983 5ac31965aacc9bca6ec3a6960ed82465 ""
+  "/dev/null" 1588537130 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -75,11 +75,11 @@
   "TABLAS.png" 1588491259 227625 ea4e49cd60b3bfe3ee0a13b2a480f8e5 ""
   "TABLA_BIVARIADA.png" 1588490943 82431 e2dac2a241348beac81a1f1ed7dd9a3c ""
   "header2.png" 1588352791 63380 93696f933578cafb3bd1cd4d171b3140 ""
-  "informe.aux" 1588491743 486 ab43777f7d006b94cc60cd8ec65dd21c "pdflatex"
-  "informe.tex" 1588491741 4849 cbdd9fb9b17b8d826fc3996a93aad1c4 ""
+  "informe.aux" 1588537131 486 ab43777f7d006b94cc60cd8ec65dd21c "pdflatex"
+  "informe.tex" 1588537128 4983 5ac31965aacc9bca6ec3a6960ed82465 ""
   (generated)
-  "informe.pdf"
   "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf"
-  "informe.log"
+  "informe.pdf"
   "informe.aux"
+  "informe.log"
   "/Users/Mati/Documents/TP1estructuras/informe/informe.log"

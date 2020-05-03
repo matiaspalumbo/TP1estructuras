@@ -41,13 +41,7 @@ GList gdclist_agregar_inicio(GList lista, void *dato);
 // Agrega un elemento al final de una lista.
 GList gdclist_agregar_final(GList lista, void *dato);
 
-// Lee el dato en la posición pos de una lista.
-void *gdclist_leer(GList lista, int pos); // BORRAR
-
-// Dados dos nodos de una lista, intercambia los datos entre sí.
+// Dada una lista y dos nodos de ella, intercambia los datos de los nodos entre sí.
 GList gdclist_intercambiar(GList lista, GNodo *nodo1, GNodo *nodo2);
-
-// Dada una lista y una función visitante, recorre la lista y aplica visit a cada nodo.
-void gdclist_recorrer(GList lista, FuncionVisitante visit); // BORRAR
 
 #endif /* __GDCLIST_H */

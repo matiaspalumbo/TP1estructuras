@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.7)  3 MAY 2020 04:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.7)  3 MAY 2020 17:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -500,40 +500,34 @@ Package pdftex.def Info: TABLAS.png  used on input line 113.
 (pdftex.def)             Requested size: 444.45639pt x 144.53867pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<TABLA_BIVARIADA.png, id=11, 591.20876pt x 264.99pt>
-File: TABLA_BIVARIADA.png Graphic file (type png)
-<use TABLA_BIVARIADA.png>
-Package pdftex.def Info: TABLA_BIVARIADA.png  used on input line 118.
-(pdftex.def)             Requested size: 266.04147pt x 119.24438pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 124.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 124.
-
-
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 13.59999pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[1] [2 </Users/Mati/Documents/TP1estructuras/informe/TABLAS.png> </Users/Mati/Documents/TP1estructuras/informe/TABLA_BIVARIADA.png>] (/Users/Mati/Documents/TP1estructuras/informe/informe.aux) ) 
+[1]
+<TABLA_BIVARIADA.png, id=17, 591.20876pt x 264.99pt>
+File: TABLA_BIVARIADA.png Graphic file (type png)
+<use TABLA_BIVARIADA.png>
+Package pdftex.def Info: TABLA_BIVARIADA.png  used on input line 118.
+(pdftex.def)             Requested size: 266.04147pt x 119.24438pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 124.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 124.
+ [2 </Users/Mati/Documents/TP1estructuras/informe/TABLAS.png> </Users/Mati/Documents/TP1estructuras/informe/TABLA_BIVARIADA.png>] (/Users/Mati/Documents/TP1estructuras/informe/informe.aux) ) 
 Here is how much of TeX's memory you used:
  13889 strings out of 492616
  250887 string characters out of 6129482
- 289451 words of memory out of 5000000
+ 288451 words of memory out of 5000000
  17713 multiletter control sequences out of 15000+600000
  535234 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,11n,63p,614b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on /Users/Mati/Documents/TP1estructuras/informe/informe.pdf (3 pages, 288137 bytes).
+Output written on /Users/Mati/Documents/TP1estructuras/informe/informe.pdf (3 pages, 288236 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  27 compressed objects within 1 object stream
