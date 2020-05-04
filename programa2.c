@@ -65,7 +65,8 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   mediante guiones bajo (_), por lo que esto se utiliza para generar un título en el archivo. */
   sscanf(archivo, "%[^_]_%[^_]_%[^_]_%[^.].txt", junk, algoritmo, junk, funcComp);
   fprintf(archivoPtr, "%s Sort ordenando %s \nTiempo de ejecución: %fs\n\nLista ordenada:\n", algoritmo, funcComp, tiempoEjecucion);
-  
+  printf("%f\n", tiempoEjecucion);
+
   GNodo *temp = lista;
   Persona *persona;
   for (int i = 0; i < longitud; i++) {
