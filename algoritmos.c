@@ -58,8 +58,8 @@ GList insertion_sort(GList lista, FuncionComparadora comparar) {
   return lista;
 }
 
-
-void agregar_final_existente(GList resultado, GNodo* lista) {
+// Función auxiliar que encapsula líneas de codigo que se ejecutan repetidas veces en la función merge para modularizarlo.
+void agregar_final_existente(GList resultado, GNodo *lista) {
   resultado->sig = lista;
   lista->ant = resultado;
 }
