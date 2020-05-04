@@ -59,6 +59,12 @@ GList insertion_sort(GList lista, FuncionComparadora comparar) {
 }
 
 
+void agregar_final_existente(GList resultado, GNodo* lista) {
+  resultado->sig = lista;
+  lista->ant = resultado;
+}
+
+
 // merge fusiona dos listas ordenadas y devuelve el resultado. Se utiliza como función auxiliar para merge_sort.
 GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
   listaL->ant->sig = NULL; // Se apunta el siguiente del último elem. de cada lista a NULL.
@@ -76,12 +82,10 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
   // Mientras las dos listas sean no vacías, las fusiona según el orden de los elementos.
   while (!gdclist_es_vacia(listaL) && !gdclist_es_vacia(listaR)) {
     if (comparar(listaL->dato, listaR->dato) <= 0) {
-      resultado->sig = listaL;
-      listaL->ant = resultado;
+      agregar_final_existente(resultado, listaL);
       listaL = listaL->sig;
     } else {
-      resultado->sig = listaR;
-      listaR->ant = resultado;
+      agregar_final_existente(resultado, listaR);
       listaR = listaR->sig;
     }
     resultado = resultado->sig;
@@ -89,8 +93,7 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
   // A lo sumo uno de los dos siguiente bucles se ejecutarán dependiendo de la lista de mayor longitud.
   // Se agregan los elementos restantes.
   while (!gdclist_es_vacia(listaL)) {
-      resultado->sig = listaL;
-      listaL->ant = resultado;
+      agregar_final_existente(resultado, listaL);
       if (listaL->sig == NULL) {
         ultimo = listaL;
         listaL = listaL->sig;
@@ -100,8 +103,7 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
       }
   }
   while (!gdclist_es_vacia(listaR)) {
-      resultado->sig = listaR;
-      listaR->ant = resultado;
+      agregar_final_existente(resultado, listaR);
       if (listaR->sig == NULL) {
         ultimo = listaR;
         listaR = listaR->sig;
@@ -110,8 +112,7 @@ GList merge(GList listaL, GList listaR, FuncionComparadora comparar) {
         resultado = resultado->sig;
       }
   }
-  ultimo->sig = listaOrdenada; // Se apunta el último nodo al primero de la lista a devolver.
-  listaOrdenada->ant = ultimo;
+  agregar_final_existente(ultimo, listaOrdenada); // Se apunta el último nodo al primero de la lista a devolver.
   return listaOrdenada;
 }
 
