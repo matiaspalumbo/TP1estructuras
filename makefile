@@ -34,3 +34,6 @@ $(PROG2) : $(PROG2).c $(LISTAS:.c=.o) $(ALGORITMOS:.c=.o) $(PERSONA:.c=.o)
 # Destino simbólico que borra todos los archivos con extensión .o cuando se invoca.
 clean: 
 	rm *.o
+
+.PHONY : all
+.PHONY : clean
