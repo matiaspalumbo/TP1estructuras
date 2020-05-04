@@ -63,8 +63,8 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   char algoritmo[MAX_STR_SIZE], funcComp[MAX_STR_SIZE], junk[MAX_STR_SIZE], orden[MAX_STR_SIZE]; // Buffers
   /* El formato del nombre del archivo especifica el algoritmo utilizado y la función comparadora
   mediante guiones bajo (_), por lo que esto se utiliza para generar un título en el archivo. */
-  sscanf(archivo, "%[^_]_%[^_]_%[^_]_%[^.].txt", algoritmo, junk, funcComp, orden);
-  fprintf(archivoPtr, "%s Sort ordenando %s (%s)\nTiempo de ejecución: %fs\n\nLista ordenada:\n", algoritmo, funcComp, orden, tiempoEjecucion);
+  sscanf(archivo, "%[^_]_%[^_]_%[^_]_%[^.].txt", junk, algoritmo, junk, funcComp);
+  fprintf(archivoPtr, "%s Sort ordenando %s \nTiempo de ejecución: %fs\n\nLista ordenada:\n", algoritmo, funcComp, tiempoEjecucion);
   
   GNodo *temp = lista;
   Persona *persona;
@@ -75,6 +75,17 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
     temp = temp->sig;
   }
   fclose(archivoPtr);
+}
+
+/* generar_nombre_archivo efectivamente genera el nombre del archivo en el cual se volcaran los datos
+correspondientes al algoritmo y función comparadora especificados en nombres con el formato
+"_Algoritmo_Sort_funcComp". */
+char* generar_nombre_achivo(char* argv1, int long_argv1, char* nombre) {
+  argv1[long_argv1-4] = '\0';
+  strcat(argv1, nombre);
+  char* extension = ".txt";
+  strcat(argv1, extension);
+  return argv1;
 }
 
 int main(int argc, char **argv) {
@@ -91,27 +102,35 @@ int main(int argc, char **argv) {
   /* Luego, se corren y los tres algoritmos de ordenación con cada función comparadora
   y se vuelcan sus resultados en un archivo (seis llamadas a correr_algoritmo), 
   en cada caso (salvo el último), copiando la lista desordenada. */
+
+  int long_argv1 = strlen(argv[1]);
   GList copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Selection_Sort_edades_ascendente.txt", copia, selection_sort, comp_edades);
+  char* nombre = generar_nombre_achivo(argv[1], long_argv1, "_Selection_Sort_edades");
+  correr_algoritmo(nombre, copia, selection_sort, comp_edades);
   gdclist_destruir(copia, NULL);
   
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Selection_Sort_nombres_alfabeticamente.txt", copia, selection_sort, comp_nombres);
+  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Selection_Sort_nombres");
+  correr_algoritmo(nombre, copia, selection_sort, comp_nombres);
   gdclist_destruir(copia, NULL);
 
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Insertion_Sort_edades_ascendente.txt", copia, insertion_sort, comp_edades);
+  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Insertion_Sort_edades");
+  correr_algoritmo(nombre, copia, insertion_sort, comp_edades);
   gdclist_destruir(copia, NULL);
   
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Insertion_Sort_nombres_alfabeticamente.txt", copia, insertion_sort, comp_nombres);
+  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Insertion_Sort_nombres");
+  correr_algoritmo(nombre, copia, insertion_sort, comp_nombres);
   gdclist_destruir(copia, NULL);
   
   copia = copiar_lista(listaPersonas);
-  correr_algoritmo("Merge_Sort_edades_ascendente.txt", copia, merge_sort, comp_edades);
+  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Merge_Sort_edades");
+  correr_algoritmo(nombre, copia, merge_sort, comp_edades);
   gdclist_destruir(copia, NULL);
-  
-  correr_algoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, merge_sort, comp_nombres);
+
+  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Merge_Sort_nombres");
+  correr_algoritmo(nombre, listaPersonas, merge_sort, comp_nombres);
   gdclist_destruir(listaPersonas, destruir_persona);
 
   return 0;
