@@ -34,9 +34,8 @@ GList leer_personas(char *file) {
   return listaPersonas; // Retorna la lista con Personas.
 }
 
-
 GList copiar_lista(GList lista) {
-  /* Función que, dada una lista, crea una nueva lista con nuevos nodos y mismos datos. */
+  // Función que, dada una lista, crea una nueva lista con nuevos nodos y mismos datos.
   int longitud = gdclist_longitud(lista);
   GList nuevaLista = gdclist_crear(); // Crea la nueva lista.
   for (int i = 0; i < longitud; i++) { 
@@ -46,7 +45,6 @@ GList copiar_lista(GList lista) {
   }
   return nuevaLista; // Retorna la nueva lista.
 }
-
 
 void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, FuncionComparadora comparar) {
   /* Función que dado un algoritmo de ordenación, una función comparadora de datos 
@@ -62,8 +60,7 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   /* Calcula el tiempo de ejecución del algoritmo restando finalSort e inicioSort.
   CLOCKS_PER_SEC es un macro definido en time.h con la cantidad de clock ticks por segundo. */
   double tiempoEjecucion = (double)(finalSort - inicioSort) / CLOCKS_PER_SEC;
-  // Buffers
-  char algoritmo[MAX_STR_SIZE], funcComp[MAX_STR_SIZE], junk[MAX_STR_SIZE], orden[MAX_STR_SIZE];
+  char algoritmo[MAX_STR_SIZE], funcComp[MAX_STR_SIZE], junk[MAX_STR_SIZE], orden[MAX_STR_SIZE]; // Buffers
   /* El formato del nombre del archivo especifica el algoritmo utilizado y la función comparadora
   mediante guiones bajo (_), por lo que esto se utiliza para generar un título en el archivo. */
   sscanf(archivo, "%[^_]_%[^_]_%[^_]_%[^.].txt", algoritmo, junk, funcComp, orden);
@@ -72,7 +69,7 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   GNodo *temp = lista;
   Persona *persona;
   for (int i = 0; i < longitud; i++) {
-    /* En cada iteración, se imprime la Persona de un nodo de la lista en el archivo. */
+    // En cada iteración, se imprime la Persona de un nodo de la lista en el archivo.
     persona = (Persona*) temp->dato;
     fprintf(archivoPtr, "%s, %d, %s\n", persona->nombre, persona->edad, persona->lugarDeNacimiento);
     temp = temp->sig;
@@ -80,18 +77,16 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   fclose(archivoPtr);
 }
 
-
 int main(int argc, char **argv) {
-  assert(argc == 2);
 //   /* 
 //   argc == 3
 //   argv[0] es el nombre del ejecutable
 //   argv[1] es el nombre del archivo de salida de programa1, es decir, el que contiene las personas (datos de prueba)
 //   argv[2] es el nombre del archivo donde se volcaran los resulados de la aplicacion de los algoritmos
 //   */
+  assert(argc == 2);
 
-  GList listaPersonas = leer_personas(argv[1]); // Se vuelvan las personas del archivo a una lista
-  
+  GList listaPersonas = leer_personas(argv[1]); // Se vuelcan las personas del archivo a una lista.
 
   /* Luego, se corren y los tres algoritmos de ordenación con cada función comparadora
   y se vuelcan sus resultados en un archivo (seis llamadas a correr_algoritmo), 
@@ -118,8 +113,6 @@ int main(int argc, char **argv) {
   
   correr_algoritmo("Merge_Sort_nombres_alfabeticamente.txt", listaPersonas, merge_sort, comp_nombres);
   gdclist_destruir(listaPersonas, destruir_persona);
-
-
 
   return 0;
 }

@@ -5,7 +5,7 @@
 # include <assert.h>
 
 /* Constante para la longitud de los strings auxiliares en la lectura de archivos.
-El tamaño fue elegido de acuerdo a los archivos con los que se trabajarán.*/
+El tamaño fue elegido de acuerdo a los archivos con los que se trabajarán. */
 #define MAX_STR_SIZE 70
 // Constante que determina la edad máxima de cada persona.
 #define MAX_EDAD 100
@@ -102,7 +102,6 @@ void libera_memoria(char **nombres, char **lugares, int len_nombres, int len_lug
   free(nombres);
   free(lugares);
 }
-
 
 int main(int argc, char **argv) {
   /* argc siempre será igual a 5
