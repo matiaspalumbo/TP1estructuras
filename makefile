@@ -17,15 +17,15 @@ $(PROG1) : $(PROG1).c
 
 # Archivo objeto de la implementacion de listas generales.
 $(LISTAS:.c=.o) : $(LISTAS) $(LISTAS.c=.h)
-	gcc -c $(LISTAS)
+	gcc $(CFLAGS) -c $(LISTAS)
 
 # Archivo objeto de la implementacion de los algoritmos de ordenación.
 $(ALGORITMOS:.c=.o) : $(ALGORITMOS) $(ALGORITMOS:.c=.h) $(LISTAS:.c=.h)
-	gcc -c $(ALGORITMOS)
+	gcc $(CFLAGS) -c $(ALGORITMOS)
 
 # Archivo objeto de la implementación de funciones con la estructura Persona.
 $(PERSONA:.c=.o) : $(PERSONA) $(PERSONA:.c=.h)
-	gcc -c $(PERSONA)
+	gcc $(CFLAGS) -c $(PERSONA)
 
 # Ejecutable de programa 2.
 $(PROG2) : $(PROG2).c $(LISTAS:.c=.o) $(ALGORITMOS:.c=.o) $(PERSONA:.c=.o)
