@@ -82,6 +82,8 @@ correspondientes al algoritmo y función comparadora especificados en nombres co
 "_Algoritmo_Sort_funcComp".
 argv1 es el nombre del archivo de entrada con la lista de personas y long_argv1 la longitud del nombre. */
 char* generar_nombre_achivo(char* argv1, int long_argv1, char* nombre) {
+  // para evitar que se acumulen los nombres de diferentes archivos en llamadas repetidas a la función
+  // termino el string en el final del nombre del archivo con la lista de personas (sin el .txt)
   argv1[long_argv1-4] = '\0';
   strcat(argv1, nombre);
   char* extension = ".txt";
