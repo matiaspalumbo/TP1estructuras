@@ -42,7 +42,7 @@ con los dos espacios de char ocupados por cada letra Ñ, si se encuentra una Ñ 
 se avanza dos chars luego de comparar la Ñ.*/
 int comp_nombres(void *persona1, void *persona2) {
   char *s1 = ((Persona*)persona1)->nombre, *s2 = ((Persona*)persona2)->nombre; // Strings a comparar.
-  int val = 0, prevChar1 = 0, prevChar2 = 0;
+  int val = 0;
   int char1, char2; // Variables utilizadas en la comparación.
   int i = 0, j = 0; // índices de s1 y s2, respectivamente.
   // El bucle itera hasta que los strings dejen de ser iguales o alguno termine.
