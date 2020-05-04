@@ -60,6 +60,7 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   /* Calcula el tiempo de ejecución del algoritmo restando finalSort e inicioSort.
   CLOCKS_PER_SEC es un macro definido en time.h con la cantidad de clock ticks por segundo. */
   double tiempoEjecucion = (double)(finalSort - inicioSort) / CLOCKS_PER_SEC;
+  printf("%f\n", tiempoEjecucion);
   char algoritmo[MAX_STR_SIZE], funcComp[MAX_STR_SIZE], junk[MAX_STR_SIZE], orden[MAX_STR_SIZE]; // Buffers
   /* El formato del nombre del archivo especifica el algoritmo utilizado y la función comparadora
   mediante guiones bajo (_), por lo que esto se utiliza para generar un título en el archivo. */
