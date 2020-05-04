@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1588537130 "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf" "informe" 1588537131
-  "/Users/Mati/Documents/TP1estructuras/informe/informe.aux" 1588537131 486 ab43777f7d006b94cc60cd8ec65dd21c ""
-  "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" 1588537128 4983 5ac31965aacc9bca6ec3a6960ed82465 ""
-  "/dev/null" 1588537130 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1588619317 "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf" "informe" 1588619319
+  "/Users/Mati/Documents/TP1estructuras/informe/informe.aux" 1588619318 598 7077e27d94b6ec0368927b5bda869db4 ""
+  "/Users/Mati/Documents/TP1estructuras/informe/informe.tex" 1588619316 7809 5a27c7e0d23d06300702924133cb9944 ""
+  "/dev/null" 1588619305 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -72,14 +72,14 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1583553097 4259635 9c8570b17bed8f5c90245702be177bee ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "TABLAS.png" 1588491259 227625 ea4e49cd60b3bfe3ee0a13b2a480f8e5 ""
-  "TABLA_BIVARIADA.png" 1588490943 82431 e2dac2a241348beac81a1f1ed7dd9a3c ""
+  "TABLAS.png" 1588615287 166545 6a91930adc2922ec02d5fa00d9c10e12 ""
+  "TABLA_BIVARIADA.png" 1588615316 64960 139de0f9373ec3157bd6e0a8ca573010 ""
   "header2.png" 1588352791 63380 93696f933578cafb3bd1cd4d171b3140 ""
-  "informe.aux" 1588537131 486 ab43777f7d006b94cc60cd8ec65dd21c "pdflatex"
-  "informe.tex" 1588537128 4983 5ac31965aacc9bca6ec3a6960ed82465 ""
+  "informe.aux" 1588619318 598 7077e27d94b6ec0368927b5bda869db4 "pdflatex"
+  "informe.tex" 1588619316 7809 5a27c7e0d23d06300702924133cb9944 ""
   (generated)
-  "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf"
-  "informe.pdf"
   "informe.aux"
   "informe.log"
+  "informe.pdf"
+  "/Users/Mati/Documents/TP1estructuras/informe/informe.pdf"
   "/Users/Mati/Documents/TP1estructuras/informe/informe.log"

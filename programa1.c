@@ -60,7 +60,7 @@ obtenidos de rand() y se devuelve el módulo de ese número con respecto a la ca
 (que será la cantidad de nombres o de lugares). */
 int generar_random(long long *prodRand, long *rand1, long *rand2, int upperLimit) {
   *rand1 = rand();
-  if ((*rand1) >= (long) upperLimit)
+  if (RAND_MAX >= (long) upperLimit)
     return (int) (*rand1 % upperLimit);
   else {
     *rand2 = rand();
