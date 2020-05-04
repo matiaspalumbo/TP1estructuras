@@ -79,7 +79,8 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
 
 /* generar_nombre_archivo efectivamente genera el nombre del archivo en el cual se volcaran los datos
 correspondientes al algoritmo y función comparadora especificados en nombres con el formato
-"_Algoritmo_Sort_funcComp". */
+"_Algoritmo_Sort_funcComp".
+argv1 es el nombre del archivo de entrada con la lista de personas y long_argv1 la longitud del nombre. */
 char* generar_nombre_achivo(char* argv1, int long_argv1, char* nombre) {
   argv1[long_argv1-4] = '\0';
   strcat(argv1, nombre);
