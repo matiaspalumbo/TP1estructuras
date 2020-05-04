@@ -63,11 +63,6 @@ int comp_nombres(void *persona1, void *persona2) {
   return val;
 }
 
-void imprimir_edad(void *dato) { // BORRAR
-  printf("%d  ", ((Persona*) dato)->edad);
-}
-
-
 // Compara las edades de dos personas.
 int comp_edades(void *persona1, void *persona2) {
   int edad1 = ((Persona*)persona1)->edad, edad2 = ((Persona*)persona2)->edad;

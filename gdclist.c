@@ -11,7 +11,6 @@ GList gdclist_crear() {
   return NULL;
 }
 
-
 void gdclist_destruir(GList lista, Destruir funcion_destructora) {
   lista->ant->sig = NULL; // Iguala a NULL el siguiente del último elemento de la lista para facilitar la terminación del bucle.
   GNodo *nodoAEliminar;
@@ -28,11 +27,9 @@ void gdclist_destruir(GList lista, Destruir funcion_destructora) {
   }
 }
 
-
 int gdclist_es_vacia(GList lista) {
   return lista == NULL;
 }
-
 
 int gdclist_longitud(GList lista) {
   int longitud;
@@ -48,7 +45,6 @@ int gdclist_longitud(GList lista) {
   }
   return longitud;
 }
-
 
 GList gdclist_agregar_inicio(GList lista, void *dato) {
   GNodo *nuevoNodo = malloc(sizeof(GNodo)); // Genera un espacio en la memoria para el nuevo nodo.
@@ -67,7 +63,6 @@ GList gdclist_agregar_inicio(GList lista, void *dato) {
   return nuevoNodo; // Retorno 'nuevoNodo' ya que pasa a ser el inicio de la lista.
 }
 
-
 GList gdclist_agregar_final(GList lista, void *dato) {
   GNodo *nuevoNodo = malloc(sizeof(GNodo)); // Le asigno un espacio en memoria al nuevo nodo a agregar.
   nuevoNodo->dato = dato;
@@ -84,7 +79,6 @@ GList gdclist_agregar_final(GList lista, void *dato) {
   }
   return lista;
 }
-
 
 GList gdclist_intercambiar(GList lista, GNodo *nodo1, GNodo *nodo2) {
   assert(nodo1 != NULL && nodo2 != NULL); // Verifico que los nodos no sean iguales a NULL.

@@ -17,13 +17,10 @@ typedef struct { // Estructura de una Persona con nombre, edad y lugar de nacimi
 // Toma un puntero a void (que es una Persona) y libera su espacio el memoria.
 void destruir_persona(void *dato);
 
-void imprimir_edad(void * dato); // BORRAR
-
-
-// FuncionComparadora que compara las edades de dos personas.
+// FuncionComparadora que compara las edades de dos personas, recibiendolas como void*.
 int comp_edades(void *persona1, void *persona2);
 
-// FuncionComparadora que compara los nombres de dos personas.
+// FuncionComparadora que compara los nombres de dos personas, recibiendlas como void*.
 int comp_nombres(void *persona1, void *persona2);
 
 
