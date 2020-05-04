@@ -65,7 +65,8 @@ void correr_algoritmo(char *archivo, GList lista, AlgoritmoSorting ordenar, Func
   mediante guiones bajo (_), por lo que esto se utiliza para generar un título en el archivo. */
   sscanf(archivo, "%[^_]_%[^_]_%[^_]_%[^.].txt", junk, algoritmo, junk, funcComp);
   fprintf(archivoPtr, "%s Sort ordenando %s \nTiempo de ejecución: %fs\n\nLista ordenada:\n", algoritmo, funcComp, tiempoEjecucion);
-  
+  printf("%f\n", tiempoEjecucion);
+
   GNodo *temp = lista;
   Persona *persona;
   for (int i = 0; i < longitud; i++) {
@@ -112,28 +113,28 @@ int main(int argc, char **argv) {
   correr_algoritmo(nombre, copia, selection_sort, comp_edades);
   gdclist_destruir(copia, NULL);
   
-  copia = copiar_lista(listaPersonas);
-  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Selection_Sort_nombres");
-  correr_algoritmo(nombre, copia, selection_sort, comp_nombres);
-  gdclist_destruir(copia, NULL);
+  // copia = copiar_lista(listaPersonas);
+  // nombre = generar_nombre_achivo(argv[1], long_argv1, "_Selection_Sort_nombres");
+  // correr_algoritmo(nombre, copia, selection_sort, comp_nombres);
+  // gdclist_destruir(copia, NULL);
 
-  copia = copiar_lista(listaPersonas);
-  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Insertion_Sort_edades");
-  correr_algoritmo(nombre, copia, insertion_sort, comp_edades);
-  gdclist_destruir(copia, NULL);
+  // copia = copiar_lista(listaPersonas);
+  // nombre = generar_nombre_achivo(argv[1], long_argv1, "_Insertion_Sort_edades");
+  // correr_algoritmo(nombre, copia, insertion_sort, comp_edades);
+  // gdclist_destruir(copia, NULL);
   
-  copia = copiar_lista(listaPersonas);
-  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Insertion_Sort_nombres");
-  correr_algoritmo(nombre, copia, insertion_sort, comp_nombres);
-  gdclist_destruir(copia, NULL);
+  // copia = copiar_lista(listaPersonas);
+  // nombre = generar_nombre_achivo(argv[1], long_argv1, "_Insertion_Sort_nombres");
+  // correr_algoritmo(nombre, copia, insertion_sort, comp_nombres);
+  // gdclist_destruir(copia, NULL);
   
-  copia = copiar_lista(listaPersonas);
-  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Merge_Sort_edades");
-  correr_algoritmo(nombre, copia, merge_sort, comp_edades);
-  gdclist_destruir(copia, NULL);
+  // copia = copiar_lista(listaPersonas);
+  // nombre = generar_nombre_achivo(argv[1], long_argv1, "_Merge_Sort_edades");
+  // correr_algoritmo(nombre, copia, merge_sort, comp_edades);
+  // gdclist_destruir(copia, NULL);
 
-  nombre = generar_nombre_achivo(argv[1], long_argv1, "_Merge_Sort_nombres");
-  correr_algoritmo(nombre, listaPersonas, merge_sort, comp_nombres);
+  // nombre = generar_nombre_achivo(argv[1], long_argv1, "_Merge_Sort_nombres");
+  // correr_algoritmo(nombre, listaPersonas, merge_sort, comp_nombres);
   gdclist_destruir(listaPersonas, destruir_persona);
 
   return 0;
