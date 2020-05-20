@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "locale.h": "c",
-        "wchar.h": "c",
-        "string.h": "c"
-    }
-}

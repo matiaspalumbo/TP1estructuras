@@ -130,7 +130,7 @@ GList merge_sort(GList lista, FuncionComparadora comparar) {
     int mitad = (longitud % 2 == 0) ? (longitud / 2) : (longitud / 2 + 1); // mitad indica la posición del primer elemento de la sublista derecha.
     for (int i = 0; i < mitad-1; i++) {
       temp = temp->sig;
-    } // Ahora temp apunta al primer nodo de la sublista derecha.
+    } // Ahora temp apunta al último nodo de la sublista izquierda.
     derOrdenado = temp->sig; // Se guardan las posiciones a reemplazar en izqOrdenado para derOrdenado.
     GNodo *finalLista2 = izqOrdenado->ant;
     temp->sig = izqOrdenado;

@@ -58,7 +58,6 @@ int comp_nombres(void *persona1, void *persona2) {
       if (s2[j] < 0 && s2[j+1] != '\0')
         j = j + 2;
       else j++;
-    // }
   }
   return val;
 }
